@@ -28,8 +28,9 @@ public class HelloApplication extends Application {
         ApiController apiController = new ApiController(api);
         String app_id = "6030db9a";
         String app_key = "facae2fab72ad57305feb9521499cb04";
+        String q = "chicken";
 
-        JsonObject jsonObject = ApiController.get("recipes", "v2?type=public&q=chicken&app_id=6030db9a&app_key=facae2fab72ad57305feb9521499cb04&health=alcohol-cocktail");
+        JsonObject jsonObject = ApiController.get("recipes", "v2?type=public&q=" + q + "&app_id=" + app_id +"&app_key=" + app_key + "&health=alcohol-cocktail");
         System.out.println(jsonObject);
         launch();
 
