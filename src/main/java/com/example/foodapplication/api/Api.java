@@ -1,8 +1,5 @@
 package com.example.foodapplication.api;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.apache.http.HttpResponse;
@@ -10,15 +7,18 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 public class Api {
 
     public JsonObject requestBuilder(String path, String query) throws Exception {
         HttpGet httpget;
         if (query == null) {
-            httpget = new HttpGet("https://swapi.dev/api/" + path + "/");
+            httpget = new HttpGet("https://api.edamam.com/api/" + path + "/");
         } else {
 
-            httpget = new HttpGet("https://swapi.dev/api/" + path + "/?search=" + query);
+            httpget = new HttpGet("https://api.edamam.com/api/" + path + "/" + query);
         }
         return getRequest(httpget);
     }

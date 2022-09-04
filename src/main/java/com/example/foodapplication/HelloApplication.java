@@ -4,18 +4,11 @@ import com.example.foodapplication.api.Api;
 import com.example.foodapplication.api.ApiController;
 import com.google.gson.JsonObject;
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-//import java.awt.*;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
 
 public class HelloApplication extends Application {
 
@@ -33,8 +26,10 @@ public class HelloApplication extends Application {
 
         Api api = new Api();
         ApiController apiController = new ApiController(api);
+        String app_id = "6030db9a";
+        String app_key = "facae2fab72ad57305feb9521499cb04";
 
-        JsonObject jsonObject = ApiController.get("planets", "naboo");
+        JsonObject jsonObject = ApiController.get("recipes", "v2?type=public&q=chicken&app_id=6030db9a&app_key=facae2fab72ad57305feb9521499cb04&health=alcohol-cocktail");
         System.out.println(jsonObject);
         launch();
 
