@@ -1,4 +1,4 @@
-module com.example.fooapplication {
+module com.example.foodapplication {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -9,7 +9,14 @@ module com.example.fooapplication {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires com.google.gson;
+    requires org.apache.httpcomponents.httpcore;
+    requires org.apache.httpcomponents.httpclient;
+    requires java.logging;
+    requires java.sql;
+    requires mysql.connector.java;
+    requires java.datatransfer;
 
-    opens com.example.fooapplication to javafx.fxml;
-    exports com.example.fooapplication;
+    opens com.example.foodapplication to javafx.fxml;
+    exports com.example.foodapplication;
 }

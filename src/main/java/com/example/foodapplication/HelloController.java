@@ -1,4 +1,4 @@
-package com.example.fooapplication;
+package com.example.foodapplication;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

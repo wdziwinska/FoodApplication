@@ -1,14 +1,14 @@
-package com.example.fooapplication.api;
+package com.example.foodapplication.api;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.URL;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.json.JSONObject;
 
 public class Api {
 
@@ -43,5 +43,8 @@ public class Api {
 
         return jsonObject;
     }
-
+    public JsonObject fromURLRequest(String url) throws Exception {
+        HttpGet httpget = new HttpGet(url);
+        return getRequest(httpget);
+    }
 }
