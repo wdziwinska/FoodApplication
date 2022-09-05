@@ -29,8 +29,14 @@ public class HelloApplication extends Application {
         String app_id = "6030db9a";
         String app_key = "facae2fab72ad57305feb9521499cb04";
         String q = "chicken";
+        String diet = "high-protein";
+        String health = "pork-free";
+        String cuisineType = "French";
+        String mealType = "Dinner";
+        String dishType = "Main%20course";
 
-        JsonObject jsonObject = ApiController.get("recipes", "v2?type=public&q=" + q + "&app_id=" + app_id +"&app_key=" + app_key + "&health=alcohol-cocktail");
+        JsonObject jsonObject = ApiController.get("recipes", "v2?type=public&q=" + q + "&app_id=" + app_id +"&app_key=" + app_key + "&diet=" + diet
+                + "&health=" + health + "&cuisineType=" + cuisineType + "&mealType=" + mealType + "&dishType=" + dishType);
         System.out.println(jsonObject);
         launch();
 
