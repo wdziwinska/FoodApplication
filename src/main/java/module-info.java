@@ -20,4 +20,6 @@ module com.example.foodapplication {
 
     opens com.example.foodapplication to javafx.fxml;
     exports com.example.foodapplication;
+    exports com.example.foodapplication.controller;
+    opens com.example.foodapplication.controller to javafx.fxml;
 }
