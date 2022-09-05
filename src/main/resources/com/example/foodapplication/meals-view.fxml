@@ -16,7 +16,7 @@
                 </font>
             </Label>
             <Label layoutX="171.0" layoutY="157.0" prefHeight="18.0" prefWidth="75.0" text="diet" />
-            <ComboBox fx:id="diet_meals" layoutX="278.0" layoutY="153.0" onAction="#dietMealsComboBox" prefWidth="150.0">
+            <ComboBox fx:id="dietMealsComboBox" layoutX="278.0" layoutY="153.0" onAction="#dietMealsComboBoxAction" prefWidth="150.0">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="low-sodium" />

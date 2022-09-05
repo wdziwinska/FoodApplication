@@ -16,9 +16,9 @@ public class MealsController {
     private Label labelTest;
 
     @FXML
-    private ComboBox<String> diet_meals;
+    private ComboBox<String> dietMealsComboBox;
 
-    public void dietMealsComboBox(ActionEvent event){
-        labelTest.setText(diet_meals.getValue());
+    public void dietMealsComboBoxAction(ActionEvent event){
+        labelTest.setText(dietMealsComboBox.getValue());
     }
 }
