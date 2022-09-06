@@ -1,12 +1,10 @@
-package com.example.foodapplication.api;
+package com.example.foodapp.api;
 
 import com.google.gson.JsonObject;
 
 public class ApiController {
 
     public static Api api;
-    //    private static Api api;
-//    private Api api;
 
     public ApiController(Api api) {
         this.api = api;

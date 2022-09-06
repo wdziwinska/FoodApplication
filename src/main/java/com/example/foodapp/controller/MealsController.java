@@ -1,7 +1,8 @@
-package com.example.foodapplication.controller;
+package com.example.foodapp.controller;
 
-import com.example.foodapplication.api.Api;
-import com.example.foodapplication.api.ApiController;
+import com.example.foodapp.MainController;
+import com.example.foodapp.api.Api;
+import com.example.foodapp.api.ApiController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -10,8 +11,8 @@ import javafx.scene.control.TextField;
 
 public class MealsController {
 
-    com.example.foodapplication.api.Api api = new Api();
-    com.example.foodapplication.api.ApiController apiController = new ApiController(api);
+    Api api = new Api();
+    ApiController apiController = new ApiController(api);
 
     public String query = "&";
     private String qValue;
@@ -39,10 +40,18 @@ public class MealsController {
     @FXML
     private TextField mainIngredientTextField;
 
+    //nie moze miec konstruktora
+//    public MealsController(Api api, ApiController apiController) {
+//        this.api = api;
+//        this.apiController = apiController;
+//    }
+
     public void OkButtonClick(){
         qValue = mainIngredientTextField.getText();
         System.out.println("q value: " + qValue);
-        getQuery();
+        MainController mainController = new MainController();
+        mainController.getRecipes(qValue, getQuery());
+        query="&";
     }
 
     public void dietMealsComboBoxAction(ActionEvent event){

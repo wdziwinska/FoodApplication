@@ -1,4 +1,4 @@
-package com.example.foodapplication.api;
+package com.example.foodapp.api;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -14,12 +14,13 @@ public class Api {
 
     public JsonObject requestBuilder(String path, String query) throws Exception {
         HttpGet httpget;
-        if (query == null) {
-            httpget = new HttpGet("https://api.edamam.com/api/" + path + "/");
-        } else {
-
-            httpget = new HttpGet("https://api.edamam.com/api/" + path + "/" + query);
-        }
+//        if (query == null) {
+            httpget = new HttpGet("https://api.edamam.com/api/recipes/" + path + query);
+        System.out.println("hhtpGet: " + httpget);
+//        }
+//        else {
+//            httpget = new HttpGet("https://api.edamam.com/api/recipes/v2?type=public" + qValue + "/" + query);
+//        }
         return getRequest(httpget);
     }
 

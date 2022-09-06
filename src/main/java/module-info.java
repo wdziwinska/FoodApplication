@@ -18,8 +18,8 @@ module com.example.foodapplication {
     requires java.datatransfer;
     requires lombok;
 
-    opens com.example.foodapplication to javafx.fxml;
-    exports com.example.foodapplication;
-    exports com.example.foodapplication.controller;
-    opens com.example.foodapplication.controller to javafx.fxml;
+    opens com.example.foodapp to javafx.fxml;
+    exports com.example.foodapp;
+    exports com.example.foodapp.controller;
+    opens com.example.foodapp.controller to javafx.fxml;
 }

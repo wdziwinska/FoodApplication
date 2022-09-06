@@ -1,8 +1,7 @@
-package com.example.foodapplication;
+package com.example.foodapp;
 
-import com.example.foodapplication.api.Api;
-import com.example.foodapplication.api.ApiController;
-import com.google.gson.JsonObject;
+import com.example.foodapp.api.Api;
+import com.example.foodapp.api.ApiController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,11 +9,11 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("CookBook!");
         stage.setScene(scene);
@@ -26,18 +25,7 @@ public class HelloApplication extends Application {
 
         Api api = new Api();
         ApiController apiController = new ApiController(api);
-        String app_id = "6030db9a";
-        String app_key = "facae2fab72ad57305feb9521499cb04";
-        String q = "chicken";
-        String diet = "high-protein";
-        String health = "pork-free";
-        String cuisineType = "French";
-        String mealType = "Dinner";
-        String dishType = "Main%20course";
-
-        JsonObject jsonObject = ApiController.get("recipes", "v2?type=public&q=" + q + "&app_id=" + app_id +"&app_key=" + app_key + "&diet=" + diet
-                + "&health=" + health + "&cuisineType=" + cuisineType + "&mealType=" + mealType + "&dishType=" + dishType);
-        System.out.println(jsonObject);
+       // MealsController mealsController = new MealsController(api, apiController);
         launch();
 
 
