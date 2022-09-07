@@ -66,49 +66,66 @@ public class MealsController {
     public Stage stage;
     MainController mainController = new MainController();
 
-    public JsonObject getJsonObject(String qValue, String query){
-        JsonObject jsonObject;
-        if(qValue != null) {
-            jsonObject = ApiController.get("v2?type=public", "&q=" + qValue + "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
-        }
-        else {
-            jsonObject = ApiController.get("v2?type=public", "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
-        }
-        return jsonObject;
+    public void getJsonObject(String qValue, String query){
+
+        new Thread(() -> {
+            JsonObject jsonObject;
+            if (qValue != null) {
+                jsonObject = ApiController.get("v2?type=public", "&q=" + qValue + "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
+            } else {
+                jsonObject = ApiController.get("v2?type=public", "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
+            }
+            hits = jsonObject.getAsJsonArray("hits");
+            if (hits.size() > 0) {
+                zero = hits.get(0).getAsJsonObject();
+                recipe = zero.get("recipe").getAsJsonObject();
+                label = recipe.getAsJsonPrimitive("label");
+                images = recipe.getAsJsonPrimitive("image");
+                ingredientLines = recipe.getAsJsonArray("ingredientLines");
+            }
+
+            System.out.println("mylabel: " + label);
+            System.out.println("myimage: " + images);
+            System.out.println("myingredientLines: " + ingredientLines);
+
+            String lebTit = label.toString();
+
+            recipeController.getElementsToRecipe(lebTit);
+        }).start();
     }
 
 
-    public void getRecipes(JsonObject jsonObject, ActionEvent event) throws IOException {
-
-//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("recipe-view.fxml"));
-////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        Scene scene = new Scene(fxmlLoader.load());
+//    public void getRecipes(JsonObject jsonObject, ActionEvent event) throws IOException {
 //
-//        RecipeController controller = new RecipeController();
-//        controller = fxmlLoader.getController();
-//        controller.getElementsToRecipe("test");
-//        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        stage.setScene(scene);
-//        stage.setResizable(false);
-//        stage.show();
-
-        hits = jsonObject.getAsJsonArray("hits");
-        if (hits.size() > 0) {
-            zero = hits.get(0).getAsJsonObject();
-            recipe = zero.get("recipe").getAsJsonObject();
-            label = recipe.getAsJsonPrimitive("label");
-            images = recipe.getAsJsonPrimitive("image");
-            ingredientLines = recipe.getAsJsonArray("ingredientLines");
-        }
-
-        System.out.println("mylabel: " + label);
-        System.out.println("myimage: " + images);
-        System.out.println("myingredientLines: " + ingredientLines);
-
-        String lebTit = label.toString();
-
-        recipeController.getElementsToRecipe(lebTit);
-    }
+////        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("recipe-view.fxml"));
+//////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+////        Scene scene = new Scene(fxmlLoader.load());
+////
+////        RecipeController controller = new RecipeController();
+////        controller = fxmlLoader.getController();
+////        controller.getElementsToRecipe("test");
+////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+////        stage.setScene(scene);
+////        stage.setResizable(false);
+////        stage.show();
+//
+//        hits = jsonObject.getAsJsonArray("hits");
+//        if (hits.size() > 0) {
+//            zero = hits.get(0).getAsJsonObject();
+//            recipe = zero.get("recipe").getAsJsonObject();
+//            label = recipe.getAsJsonPrimitive("label");
+//            images = recipe.getAsJsonPrimitive("image");
+//            ingredientLines = recipe.getAsJsonArray("ingredientLines");
+//        }
+//
+//        System.out.println("mylabel: " + label);
+//        System.out.println("myimage: " + images);
+//        System.out.println("myingredientLines: " + ingredientLines);
+//
+//        String lebTit = label.toString();
+//
+//        recipeController.getElementsToRecipe(lebTit);
+//    }
 
     @FXML
     protected void recipeAnchorPane(ActionEvent event) throws IOException {
@@ -121,7 +138,7 @@ public class MealsController {
         System.out.println("q value: " + qValue);
         MainController mainController = new MainController();
         ActionEvent event = new ActionEvent();
-        getRecipes(getJsonObject(qValue, getQuery()), event);
+        getJsonObject(qValue, getQuery());
         query="";
     }
 
