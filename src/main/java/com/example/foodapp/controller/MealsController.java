@@ -14,7 +14,7 @@ public class MealsController {
     Api api = new Api();
     ApiController apiController = new ApiController(api);
 
-    public String query = "&";
+    public String query = "";
     private String qValue;
     private String chosenDietValue;
     private String chosenHealthValue;
@@ -51,7 +51,7 @@ public class MealsController {
         System.out.println("q value: " + qValue);
         MainController mainController = new MainController();
         mainController.getRecipes(qValue, getQuery());
-        query="&";
+        query="";
     }
 
     public void dietMealsComboBoxAction(ActionEvent event){
@@ -91,7 +91,7 @@ public class MealsController {
     public String getQuery(){
 
         if(chosenDietValue != null){
-            query += "diet=";
+            query += "&diet=";
             query += chosenDietValue;
         }
         if(chosenHealthValue != null){
