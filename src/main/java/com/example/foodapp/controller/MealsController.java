@@ -7,6 +7,7 @@ import com.example.foodapp.api.ApiController;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -74,6 +75,7 @@ public class MealsController {
 
     @FXML
     public void passInfo(ActionEvent event, String chosenItem, String view) throws IOException {
+        System.out.println("Wchodze do passInfo");
         FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource(view));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(FXMLloader.load());
@@ -84,6 +86,7 @@ public class MealsController {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
+        System.out.println("Wychodze z passInfo");
 
         ////        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("recipe-view.fxml"));
 //////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -98,32 +101,45 @@ public class MealsController {
 ////        stage.show();
     }
 
-    public void getJsonObject(String qValue, String query){
+    public void getJsonObject(String qValue, String query, ActionEvent event){
 
+        System.out.println("Wchodze do getJesonObject");
         new Thread(() -> {
-            JsonObject jsonObject;
-            if (qValue != null) {
-                jsonObject = ApiController.get("v2?type=public", "&q=" + qValue + "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
-            } else {
-                jsonObject = ApiController.get("v2?type=public", "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
+            try {
+                JsonObject jsonObject;
+                if (qValue != null) {
+                    jsonObject = ApiController.get("v2?type=public", "&q=" + qValue + "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
+                } else {
+                    jsonObject = ApiController.get("v2?type=public", "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
+                }
+                hits = jsonObject.getAsJsonArray("hits");
+                if (hits.size() > 0) {
+                    zero = hits.get(0).getAsJsonObject();
+                    recipe = zero.get("recipe").getAsJsonObject();
+                    label = recipe.getAsJsonPrimitive("label");
+                    images = recipe.getAsJsonPrimitive("image");
+                    ingredientLines = recipe.getAsJsonArray("ingredientLines");
+                }
+            }catch (Exception e) {
+                e.printStackTrace();
             }
-            hits = jsonObject.getAsJsonArray("hits");
-            if (hits.size() > 0) {
-                zero = hits.get(0).getAsJsonObject();
-                recipe = zero.get("recipe").getAsJsonObject();
-                label = recipe.getAsJsonPrimitive("label");
-                images = recipe.getAsJsonPrimitive("image");
-                ingredientLines = recipe.getAsJsonArray("ingredientLines");
-            }
-
-
 
             System.out.println("mylabel: " + label);
             System.out.println("myimage: " + images);
             System.out.println("myingredientLines: " + ingredientLines);
 
             lebTit = label.toString();
+            System.out.println("lebTit: " + lebTit);
 
+            Platform.runLater(() ->{
+                try {
+                    passInfo(event, lebTit, "recipe-view.fxml");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            System.out.println("Wychodze z getJesonObject");
 //            recipeController.getElementsToRecipe(lebTit);
         }).start();
     }
@@ -144,12 +160,12 @@ public class MealsController {
 //    }
 
     public void OkButtonClick(ActionEvent event) throws IOException {
+        System.out.println("Wchodze do OkButtonClick");
         qValue = mainIngredientTextField.getText();
         System.out.println("q value: " + qValue);
-        getJsonObject(qValue, getQuery());
+        getJsonObject(qValue, getQuery(), event);
         query="";
-
-        passInfo(event, "Halko", "recipe-view.fxml");
+        System.out.println("Wychodze z OkButtonClick");
     }
 
     public void dietMealsComboBoxAction(ActionEvent event){
