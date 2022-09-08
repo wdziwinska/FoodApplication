@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox prefHeight="96.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.OneRecipeViewController">
+   <children>
+      <ImageView fx:id="image" fitHeight="100.0" fitWidth="123.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="title" prefHeight="121.0" prefWidth="143.0" text="Label" />
+      <ListView fx:id="lsIngredients" prefHeight="108.0" prefWidth="258.0" />
+   </children>
+</HBox>

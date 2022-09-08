@@ -91,7 +91,7 @@ public class MealsController {
         stage.show();
         System.out.println("Wychodze z passInfo");
 
-        ////        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("recipe-view.fxml"));
+        ////        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("recipes-view.fxml"));
 //////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 ////        Scene scene = new Scene(fxmlLoader.load());
 ////
@@ -141,7 +141,7 @@ public class MealsController {
 
             Platform.runLater(() ->{
                 try {
-                    passInfo(event, lebTit, "recipe-view.fxml");
+                    passInfo(event, lebTit, "recipes-view.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -164,7 +164,7 @@ public class MealsController {
 //    @FXML
 //    protected void recipeAnchorPane(ActionEvent event) throws IOException {
 //        OkButtonClick(event);
-////        changeScene("recipe-view.fxml", event);
+////        changeScene("recipes-view.fxml", event);
 //    }
 
     public void OkButtonClick(ActionEvent event) throws IOException {
