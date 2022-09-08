@@ -1,5 +1,6 @@
 package com.example.foodapp.controller;
 
+import com.example.foodapp.Main;
 import com.example.foodapp.MainController;
 import com.example.foodapp.api.Api;
 import com.example.foodapp.api.ApiController;
@@ -8,6 +9,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -31,7 +35,7 @@ public class MealsController {
     private JsonArray hits = null;
     private JsonObject zero = null;
     private JsonObject recipe = null;
-    private JsonElement label = null;
+    public JsonElement label = null;
     private JsonElement images = null;
     private JsonArray ingredientLines = null;
     public String app_id = "6030db9a";
@@ -57,6 +61,8 @@ public class MealsController {
 
     RecipeController recipeController = new RecipeController();
 
+    public String lebTit;
+
     //nie moze miec konstruktora
 //    public MealsController(Api api, ApiController apiController) {
 //        this.api = api;
@@ -65,6 +71,32 @@ public class MealsController {
 
     public Stage stage;
     MainController mainController = new MainController();
+
+    @FXML
+    public void passInfo(ActionEvent event, String chosenItem, String view) throws IOException {
+        FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource(view));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(FXMLloader.load());
+        RecipeController recipeController = new RecipeController();
+
+        recipeController = FXMLloader.getController();
+        recipeController.getElementsToRecipe(chosenItem);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+
+        ////        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("recipe-view.fxml"));
+//////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+////        Scene scene = new Scene(fxmlLoader.load());
+////
+////        RecipeController controller = new RecipeController();
+////        controller = fxmlLoader.getController();
+////        controller.getElementsToRecipe("test");
+////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+////        stage.setScene(scene);
+////        stage.setResizable(false);
+////        stage.show();
+    }
 
     public void getJsonObject(String qValue, String query){
 
@@ -84,62 +116,40 @@ public class MealsController {
                 ingredientLines = recipe.getAsJsonArray("ingredientLines");
             }
 
+
+
             System.out.println("mylabel: " + label);
             System.out.println("myimage: " + images);
             System.out.println("myingredientLines: " + ingredientLines);
 
-            String lebTit = label.toString();
+            lebTit = label.toString();
 
-            recipeController.getElementsToRecipe(lebTit);
+//            recipeController.getElementsToRecipe(lebTit);
         }).start();
     }
 
-
-//    public void getRecipes(JsonObject jsonObject, ActionEvent event) throws IOException {
-//
-////        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("recipe-view.fxml"));
-//////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-////        Scene scene = new Scene(fxmlLoader.load());
-////
-////        RecipeController controller = new RecipeController();
-////        controller = fxmlLoader.getController();
-////        controller.getElementsToRecipe("test");
-////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-////        stage.setScene(scene);
-////        stage.setResizable(false);
-////        stage.show();
-//
-//        hits = jsonObject.getAsJsonArray("hits");
-//        if (hits.size() > 0) {
-//            zero = hits.get(0).getAsJsonObject();
-//            recipe = zero.get("recipe").getAsJsonObject();
-//            label = recipe.getAsJsonPrimitive("label");
-//            images = recipe.getAsJsonPrimitive("image");
-//            ingredientLines = recipe.getAsJsonArray("ingredientLines");
-//        }
-//
-//        System.out.println("mylabel: " + label);
-//        System.out.println("myimage: " + images);
-//        System.out.println("myingredientLines: " + ingredientLines);
-//
-//        String lebTit = label.toString();
-//
-//        recipeController.getElementsToRecipe(lebTit);
-//    }
-
-    @FXML
-    protected void recipeAnchorPane(ActionEvent event) throws IOException {
-        OkButtonClick();
-        mainController.changeScene("recipe-view.fxml", event);
+    public void changeScene(String viewName, ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(viewName));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
     }
 
-    public void OkButtonClick() throws IOException {
+//    @FXML
+//    protected void recipeAnchorPane(ActionEvent event) throws IOException {
+//        OkButtonClick(event);
+////        changeScene("recipe-view.fxml", event);
+//    }
+
+    public void OkButtonClick(ActionEvent event) throws IOException {
         qValue = mainIngredientTextField.getText();
         System.out.println("q value: " + qValue);
-        MainController mainController = new MainController();
-        ActionEvent event = new ActionEvent();
         getJsonObject(qValue, getQuery());
         query="";
+
+        passInfo(event, "Halko", "recipe-view.fxml");
     }
 
     public void dietMealsComboBoxAction(ActionEvent event){

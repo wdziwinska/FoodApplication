@@ -21,7 +21,7 @@ public class RecipeController {
 
     public void getElementsToRecipe(String labelTitle){
         System.out.println("Hello World " + labelTitle);
-//        label.setText(labelTitle);
+        label.setText(labelTitle);
     }
 
     public void onButtonTestClick(){
