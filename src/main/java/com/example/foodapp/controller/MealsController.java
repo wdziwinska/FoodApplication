@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MealsController {
 
@@ -63,6 +64,7 @@ public class MealsController {
     RecipeController recipeController = new RecipeController();
 
     public String lebTit;
+    public ArrayList<String> listofIngredient = new ArrayList<String>();
 
     //nie moze miec konstruktora
 //    public MealsController(Api api, ApiController apiController) {
@@ -82,7 +84,7 @@ public class MealsController {
         RecipeController recipeController = new RecipeController();
 
         recipeController = FXMLloader.getController();
-        recipeController.getElementsToRecipe(chosenItem);
+        recipeController.getElementsToRecipe(chosenItem, listofIngredient);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -129,6 +131,10 @@ public class MealsController {
             System.out.println("myingredientLines: " + ingredientLines);
 
             lebTit = label.toString();
+            for(int i = 0; i < ingredientLines.size(); i++){
+                listofIngredient.add(ingredientLines.get(i).toString());
+                System.out.println("list of ingredient: " + listofIngredient);
+            }
             System.out.println("lebTit: " + lebTit);
 
             Platform.runLater(() ->{
