@@ -65,6 +65,7 @@ public class MealsController {
 
     public String lebTit;
     public ArrayList<String> listofIngredient = new ArrayList<String>();
+    public String url;
 
     //nie moze miec konstruktora
 //    public MealsController(Api api, ApiController apiController) {
@@ -84,7 +85,7 @@ public class MealsController {
         RecipeController recipeController = new RecipeController();
 
         recipeController = FXMLloader.getController();
-        recipeController.getElementsToRecipe(chosenItem, listofIngredient);
+        recipeController.getElementsToRecipe(chosenItem, listofIngredient, url);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -135,6 +136,7 @@ public class MealsController {
                 listofIngredient.add(ingredientLines.get(i).toString());
                 System.out.println("list of ingredient: " + listofIngredient);
             }
+            url = images.toString();
             System.out.println("lebTit: " + lebTit);
 
             Platform.runLater(() ->{

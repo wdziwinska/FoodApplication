@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.List;
@@ -24,16 +25,19 @@ public class RecipeController {
     private ListView<String> listOfIngredients;
 
 
-    public void getElementsToRecipe(String labelTitle, List<String> ingredient){
+    public void getElementsToRecipe(String labelTitle, List<String> ingredient, String url) {
+
+        String newUrl = url.replace("\"", "");
+        System.out.println("new url: " + newUrl);
         System.out.println("Hello World " + labelTitle);
+
         label.setText(labelTitle);
         ingredientLines.setText(String.valueOf(ingredient));
         listOfIngredients.getItems().addAll(ingredient);
-//        Image image = new Image(getClass().getResourceAsStream(url));
-//        imageView.setImage(image);
+        imageView.setImage(new Image(newUrl));
     }
 
-    public void onButtonTestClick(){
+    public void onButtonTestClick() {
         System.out.println("HelloWorld");
     }
 }
