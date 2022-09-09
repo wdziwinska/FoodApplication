@@ -123,6 +123,9 @@ public class MealsController {
                 hits = jsonObject.getAsJsonArray("hits");
                 if (hits.size() > 0) {
                     for (int i= 0 ; i<hits.size(); i++) {
+//                        listofIngredient.clear();
+                        ArrayList<String> listofIngredient = new ArrayList<String>();
+
                         zero = hits.get(i).getAsJsonObject();
                         recipe = zero.get("recipe").getAsJsonObject();
                         label = recipe.getAsJsonPrimitive("label");
@@ -131,14 +134,14 @@ public class MealsController {
 
                         lebTit = label.toString();
                         for(int j = 0; j < ingredientLines.size(); j++){
-                            listofIngredient.add(ingredientLines.get(j).toString());
+                          listofIngredient.add(ingredientLines.get(j).toString());
                         }
                         url = images.toString();
                         newUrl = url.replace("\"", "");
 
-                        names.add(lebTit);
+                        names.add(label.toString());
                         urls.add(newUrl);
-                        ingredients.add(listofIngredient);
+                        ingredients.add(i, listofIngredient);
                     }
                 }
             }catch (Exception e) {

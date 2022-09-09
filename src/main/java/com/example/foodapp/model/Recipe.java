@@ -1,12 +1,12 @@
 package com.example.foodapp.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Recipe {
 
     private String name;
     private String imageSoruce;
-    private List<String> ingredients;
+    private ArrayList<String> ingredients;
 
     public String getName() {
         return name;
@@ -24,11 +24,11 @@ public class Recipe {
         this.imageSoruce = imageSoruce;
     }
 
-    public List<String> getIngredients() {
+    public ArrayList<String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<String> ingredients) {
+    public void setIngredients(ArrayList<String> ingredients) {
         this.ingredients = ingredients;
     }
 
