@@ -8,6 +8,7 @@ public class Recipe {
     private String imageSoruce;
     private ArrayList<String> ingredients;
     private String url;
+    public String calories;
 
     public String getName() {
         return name;
@@ -31,6 +32,14 @@ public class Recipe {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getCalories() {
+        return calories;
+    }
+
+    public void setCalories(String calories) {
+        this.calories = calories;
     }
 
     public ArrayList<String> getIngredients() {

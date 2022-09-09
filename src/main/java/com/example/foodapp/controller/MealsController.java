@@ -40,6 +40,7 @@ public class MealsController {
     private JsonObject recipe = null;
     public JsonElement label = null;
     private JsonElement images = null;
+    private JsonElement calories = null;
     private JsonArray ingredientLines = null;
     public String app_id = "6030db9a";
     public String app_key = "facae2fab72ad57305feb9521499cb04";
@@ -66,10 +67,11 @@ public class MealsController {
 
     public String path;
 
-    public ArrayList<String> names = new ArrayList<String>();
-    public ArrayList<String> urls = new ArrayList<String>();
-    public ArrayList<String> imagesUrl  = new ArrayList<String>();;
-    public ArrayList<ArrayList> ingredients  = new ArrayList<ArrayList>();;
+    public ArrayList<String> namesList = new ArrayList<String>();
+    public ArrayList<String> urlsList = new ArrayList<String>();
+    public ArrayList<String> imagesUrlList = new ArrayList<String>();;
+    public ArrayList<String> caloriesList  = new ArrayList<String>();;
+    public ArrayList<ArrayList> ingredientsList = new ArrayList<ArrayList>();;
 
     //nie moze miec konstruktora
 //    public MealsController(Api api, ApiController apiController) {
@@ -96,7 +98,7 @@ public class MealsController {
         RecipeController recipeController = new RecipeController();
 
         recipeController = FXMLloader.getController();
-        recipeController.getOneRecipe(names, ingredients, imagesUrl, urls);
+        recipeController.getOneRecipe(namesList, ingredientsList, imagesUrlList, urlsList, caloriesList);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -137,6 +139,7 @@ public class MealsController {
                         images = recipe.getAsJsonPrimitive("image");
                         ingredientLines = recipe.getAsJsonArray("ingredientLines");
                         url = recipe.getAsJsonPrimitive("url");
+                        calories = recipe.getAsJsonPrimitive("calories");
 
                         System.out.println("url: " + url);
 
@@ -146,10 +149,11 @@ public class MealsController {
                         path = images.toString();
                         newUrl = path.replace("\"", "");
 
-                        names.add(label.toString());
-                        imagesUrl.add(newUrl);
-                        ingredients.add(i, listofIngredient);
-                        urls.add(url.toString());
+                        namesList.add(label.toString());
+                        imagesUrlList.add(newUrl);
+                        ingredientsList.add(i, listofIngredient);
+                        urlsList.add(url.toString());
+                        caloriesList.add(calories.toString());
                     }
                 }
             }catch (Exception e) {

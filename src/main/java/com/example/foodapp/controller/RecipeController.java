@@ -41,6 +41,7 @@ public class RecipeController implements Initializable {
     public ArrayList<String> name;
     public ArrayList<String> imageUrl;
     public ArrayList<String> urlsRecipe;
+    public ArrayList<String> calories;
     public ArrayList<ArrayList> lsOfIngredients;
 
 
@@ -49,12 +50,13 @@ public class RecipeController implements Initializable {
 
     }
 
-    public void getOneRecipe(ArrayList<String> labelTitle, ArrayList<ArrayList> ingredient, ArrayList<String> url, ArrayList<String> urls){
+    public void getOneRecipe(ArrayList<String> labelTitle, ArrayList<ArrayList> ingredient, ArrayList<String> url, ArrayList<String> urls, ArrayList<String> caloriesList){
 
         name = labelTitle;
         imageUrl = url;
         lsOfIngredients = ingredient;
         urlsRecipe = urls;
+        calories = caloriesList;
 
         List<Recipe> recipes = new ArrayList<>(recipes());
 
@@ -89,6 +91,10 @@ public class RecipeController implements Initializable {
             recipe.setIngredients(lsOfIngredients.get(i));
             recipe.setImageSoruce(imageUrl.get(i));
             recipe.setUrl(urlsRecipe.get(i));
+//            recipe.setCalories(calories.get(i));
+            recipe.setCalories(calories.get(i).split("\\.")[0]);
+//            recipe.setCalories(calories.get(i).slice(0, calories.get(i).lastIndexOf(".")));
+
             listRecipes.add(recipe);
         }
         return listRecipes;

@@ -31,6 +31,9 @@ public class OneRecipeViewController implements Initializable {
     @FXML
     private Hyperlink hyperlink;
 
+    @FXML
+    private Label calories;
+
     public String trueUrl;
 
     public void setData(Recipe recipe){
@@ -38,6 +41,7 @@ public class OneRecipeViewController implements Initializable {
         title.setText(recipe.getName());
         lsIngredients.getItems().addAll(recipe.getIngredients());
         hyperlink.setText(recipe.getUrl());
+        calories.setText(recipe.getCalories());
 
         trueUrl = recipe.getUrl();
     }
