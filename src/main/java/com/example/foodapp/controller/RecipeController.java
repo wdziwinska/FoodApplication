@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -42,51 +41,17 @@ public class RecipeController implements Initializable {
     public ArrayList<ArrayList> lsOfIngredients;
 
 
-    public void getElementsToRecipe(ArrayList<String> labelTitle, ArrayList<ArrayList> ingredient, ArrayList<String> url) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    public void getOneRecipe(ArrayList<String> labelTitle, ArrayList<ArrayList> ingredient, ArrayList<String> url){
 
         name = labelTitle;
         imageUrl = url;
         lsOfIngredients = ingredient;
 
-        for(int i=0; i<name.size(); i++) {
-            label.setText(labelTitle.get(i));
-            ingredientLines.setText(String.valueOf(ingredient));
-            listOfIngredients.getItems().addAll(ingredient.get(i));
-            imageView.setImage(new Image(url.get(i)));
-        }
-
-        getOneRecipe();
-    }
-
-    public void onButtonTestClick() {
-        System.out.println("HelloWorld");
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        List<Recipe> recipes = new ArrayList<>(recipes());
-//
-//        Platform.runLater(() ->{
-//            for (int i = 0; i<recipes.size(); i++){
-////                FXMLLoader FXMLloader = new FXMLLoader();
-////                FXMLloader.setLocation(getClass().getResource("oneRecipe-view.fxml"));
-//                FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource("oneRecipe-view.fxml"));
-//
-//                try {
-//                    HBox hBox = FXMLloader.load();
-//                    OneRecipeViewController oneRecipeViewController = FXMLloader.getController();
-//                    oneRecipeViewController.setData(recipes.get(i));
-//                    recipesLayout.getChildren().add(hBox);
-//
-//
-//                }catch(IOException e){
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
-    }
-
-    public void getOneRecipe(){
         List<Recipe> recipes = new ArrayList<>(recipes());
 
         Platform.runLater(() ->{

@@ -90,7 +90,7 @@ public class MealsController {
         RecipeController recipeController = new RecipeController();
 
         recipeController = FXMLloader.getController();
-        recipeController.getElementsToRecipe(names, ingredients, urls);
+        recipeController.getOneRecipe(names, ingredients, urls);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
