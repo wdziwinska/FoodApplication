@@ -37,26 +37,23 @@ public class RecipeController implements Initializable {
     @FXML
     private VBox recipesLayout;
 
-    public String name;
-    public String imageUrl;
-    public List<String> lsOfIngredients;
+    public ArrayList<String> name;
+    public ArrayList<String> imageUrl;
+    public ArrayList<ArrayList> lsOfIngredients;
 
 
-    public void getElementsToRecipe(String labelTitle, List<String> ingredient, String url) {
-
-
-//        String newUrl = url.replace("\"", "");
-        System.out.println("new url: " + url);
-        System.out.println("Hello World " + labelTitle);
+    public void getElementsToRecipe(ArrayList<String> labelTitle, ArrayList<ArrayList> ingredient, ArrayList<String> url) {
 
         name = labelTitle;
         imageUrl = url;
         lsOfIngredients = ingredient;
 
-        label.setText(labelTitle);
-        ingredientLines.setText(String.valueOf(ingredient));
-        listOfIngredients.getItems().addAll(ingredient);
-        imageView.setImage(new Image(url));
+        for(int i=0; i<name.size(); i++) {
+            label.setText(labelTitle.get(i));
+            ingredientLines.setText(String.valueOf(ingredient));
+            listOfIngredients.getItems().addAll(ingredient.get(i));
+            imageView.setImage(new Image(url.get(i)));
+        }
 
         getOneRecipe();
     }
@@ -114,24 +111,17 @@ public class RecipeController implements Initializable {
 
     private List<Recipe> recipes(){
         List<Recipe> listRecipes = new ArrayList<>();
-        Recipe recipe = new Recipe();
+
 
         System.out.println("image url: " + imageUrl);
 
-        recipe.setName(name);
-        recipe.setIngredients(lsOfIngredients);
-        recipe.setImageSoruce(imageUrl);
-        listRecipes.add(recipe);
-
-        recipe.setName(name);
-        recipe.setIngredients(lsOfIngredients);
-        recipe.setImageSoruce(imageUrl);
-        listRecipes.add(recipe);
-
-        recipe.setName(name);
-        recipe.setIngredients(lsOfIngredients);
-        recipe.setImageSoruce(imageUrl);
-        listRecipes.add(recipe);
+        for(int i=0; i<name.size(); i++) {
+            Recipe recipe = new Recipe();
+            recipe.setName(name.get(i));
+            recipe.setIngredients(lsOfIngredients.get(i));
+            recipe.setImageSoruce(imageUrl.get(i));
+            listRecipes.add(recipe);
+        }
 
 //        recipe.setName("Eggs withtomatoes - test2");
 //        recipe.setIngredients(Arrays.asList("Ing: 2 egg", "1 glass of water", "5 tomatoes"));

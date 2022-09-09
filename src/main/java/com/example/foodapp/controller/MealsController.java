@@ -67,6 +67,10 @@ public class MealsController {
     public ArrayList<String> listofIngredient = new ArrayList<String>();
     public String url;
 
+    public ArrayList<String> names = new ArrayList<String>();
+    public ArrayList<String> urls  = new ArrayList<String>();;
+    public ArrayList<ArrayList> ingredients  = new ArrayList<ArrayList>();;
+
     //nie moze miec konstruktora
 //    public MealsController(Api api, ApiController apiController) {
 //        this.api = api;
@@ -86,7 +90,7 @@ public class MealsController {
         RecipeController recipeController = new RecipeController();
 
         recipeController = FXMLloader.getController();
-        recipeController.getElementsToRecipe(chosenItem, listofIngredient, newUrl);
+        recipeController.getElementsToRecipe(names, ingredients, urls);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -118,11 +122,24 @@ public class MealsController {
                 }
                 hits = jsonObject.getAsJsonArray("hits");
                 if (hits.size() > 0) {
-                    zero = hits.get(0).getAsJsonObject();
-                    recipe = zero.get("recipe").getAsJsonObject();
-                    label = recipe.getAsJsonPrimitive("label");
-                    images = recipe.getAsJsonPrimitive("image");
-                    ingredientLines = recipe.getAsJsonArray("ingredientLines");
+                    for (int i= 0 ; i<hits.size(); i++) {
+                        zero = hits.get(i).getAsJsonObject();
+                        recipe = zero.get("recipe").getAsJsonObject();
+                        label = recipe.getAsJsonPrimitive("label");
+                        images = recipe.getAsJsonPrimitive("image");
+                        ingredientLines = recipe.getAsJsonArray("ingredientLines");
+
+                        lebTit = label.toString();
+                        for(int j = 0; j < ingredientLines.size(); j++){
+                            listofIngredient.add(ingredientLines.get(j).toString());
+                        }
+                        url = images.toString();
+                        newUrl = url.replace("\"", "");
+
+                        names.add(lebTit);
+                        urls.add(newUrl);
+                        ingredients.add(listofIngredient);
+                    }
                 }
             }catch (Exception e) {
                 e.printStackTrace();
@@ -131,15 +148,6 @@ public class MealsController {
             System.out.println("mylabel: " + label);
             System.out.println("myimage: " + images);
             System.out.println("myingredientLines: " + ingredientLines);
-
-            lebTit = label.toString();
-            for(int i = 0; i < ingredientLines.size(); i++){
-                listofIngredient.add(ingredientLines.get(i).toString());
-                System.out.println("list of ingredient: " + listofIngredient);
-            }
-            url = images.toString();
-            newUrl = url.replace("\"", "");
-            System.out.println("lebTit: " + lebTit);
 
             Platform.runLater(() ->{
                 try {
