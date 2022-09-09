@@ -38,6 +38,7 @@ public class RecipeController implements Initializable {
 
     public ArrayList<String> name;
     public ArrayList<String> imageUrl;
+    public ArrayList<String> urlsRecipe;
     public ArrayList<ArrayList> lsOfIngredients;
 
 
@@ -46,11 +47,12 @@ public class RecipeController implements Initializable {
 
     }
 
-    public void getOneRecipe(ArrayList<String> labelTitle, ArrayList<ArrayList> ingredient, ArrayList<String> url){
+    public void getOneRecipe(ArrayList<String> labelTitle, ArrayList<ArrayList> ingredient, ArrayList<String> url, ArrayList<String> urls){
 
         name = labelTitle;
         imageUrl = url;
         lsOfIngredients = ingredient;
+        urlsRecipe = urls;
 
         List<Recipe> recipes = new ArrayList<>(recipes());
 
@@ -84,6 +86,7 @@ public class RecipeController implements Initializable {
             recipe.setName(name.get(i));
             recipe.setIngredients(lsOfIngredients.get(i));
             recipe.setImageSoruce(imageUrl.get(i));
+            recipe.setUrl(urlsRecipe.get(i));
             listRecipes.add(recipe);
         }
         return listRecipes;

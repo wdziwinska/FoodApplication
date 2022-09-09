@@ -17,6 +17,7 @@ module com.example.foodapplication {
     requires mysql.connector.java;
     requires java.datatransfer;
     requires lombok;
+    requires java.desktop;
 
     opens com.example.foodapp to javafx.fxml;
     exports com.example.foodapp;

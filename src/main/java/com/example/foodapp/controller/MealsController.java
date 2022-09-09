@@ -35,6 +35,7 @@ public class MealsController {
     private String chosenDishTypeValue;
 
     private JsonArray hits = null;
+    private JsonElement url = null;
     private JsonObject zero = null;
     private JsonObject recipe = null;
     public JsonElement label = null;
@@ -63,12 +64,11 @@ public class MealsController {
 
     RecipeController recipeController = new RecipeController();
 
-    public String lebTit;
-    public ArrayList<String> listofIngredient = new ArrayList<String>();
-    public String url;
+    public String path;
 
     public ArrayList<String> names = new ArrayList<String>();
-    public ArrayList<String> urls  = new ArrayList<String>();;
+    public ArrayList<String> urls = new ArrayList<String>();
+    public ArrayList<String> imagesUrl  = new ArrayList<String>();;
     public ArrayList<ArrayList> ingredients  = new ArrayList<ArrayList>();;
 
     //nie moze miec konstruktora
@@ -82,7 +82,7 @@ public class MealsController {
     String newUrl;
 
     @FXML
-    public void passInfo(ActionEvent event, String chosenItem, String view) throws IOException {
+    public void passInfo(ActionEvent event, String view) throws IOException {
         System.out.println("Wchodze do passInfo");
         FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource(view));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -90,7 +90,7 @@ public class MealsController {
         RecipeController recipeController = new RecipeController();
 
         recipeController = FXMLloader.getController();
-        recipeController.getOneRecipe(names, ingredients, urls);
+        recipeController.getOneRecipe(names, ingredients, imagesUrl, urls);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -123,7 +123,6 @@ public class MealsController {
                 hits = jsonObject.getAsJsonArray("hits");
                 if (hits.size() > 0) {
                     for (int i= 0 ; i<hits.size(); i++) {
-//                        listofIngredient.clear();
                         ArrayList<String> listofIngredient = new ArrayList<String>();
 
                         zero = hits.get(i).getAsJsonObject();
@@ -131,17 +130,20 @@ public class MealsController {
                         label = recipe.getAsJsonPrimitive("label");
                         images = recipe.getAsJsonPrimitive("image");
                         ingredientLines = recipe.getAsJsonArray("ingredientLines");
+                        url = recipe.getAsJsonPrimitive("url");
 
-                        lebTit = label.toString();
+                        System.out.println("url: " + url);
+
                         for(int j = 0; j < ingredientLines.size(); j++){
                           listofIngredient.add(ingredientLines.get(j).toString());
                         }
-                        url = images.toString();
-                        newUrl = url.replace("\"", "");
+                        path = images.toString();
+                        newUrl = path.replace("\"", "");
 
                         names.add(label.toString());
-                        urls.add(newUrl);
+                        imagesUrl.add(newUrl);
                         ingredients.add(i, listofIngredient);
+                        urls.add(url.toString());
                     }
                 }
             }catch (Exception e) {
@@ -154,7 +156,7 @@ public class MealsController {
 
             Platform.runLater(() ->{
                 try {
-                    passInfo(event, lebTit, "recipes-view.fxml");
+                    passInfo(event, "recipes-view.fxml");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

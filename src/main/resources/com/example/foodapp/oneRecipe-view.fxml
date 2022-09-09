@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.ImageView?>
@@ -10,11 +11,12 @@
 <HBox prefHeight="96.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.OneRecipeViewController">
    <children>
       <ImageView fx:id="image" fitHeight="86.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="title" prefHeight="96.0" prefWidth="138.0" text="Label" wrapText="true">
+      <Label fx:id="title" prefHeight="96.0" prefWidth="140.0" text="Label" wrapText="true">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Label>
-      <ListView fx:id="lsIngredients" prefHeight="96.0" prefWidth="632.0" />
+      <ListView fx:id="lsIngredients" prefHeight="96.0" prefWidth="499.0" />
+      <Hyperlink fx:id="hyperlink" onAction="#onHyperlinkClick" prefHeight="24.0" prefWidth="180.0" text="Hyperlink" />
    </children>
    <opaqueInsets>
       <Insets left="5.0" right="5.0" top="5.0" />
