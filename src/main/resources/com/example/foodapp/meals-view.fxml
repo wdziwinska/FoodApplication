@@ -135,6 +135,7 @@
 <!--        <Button fx:id="recipeButton" layoutX="490.0" layoutY="434.0" mnemonicParsing="false" onAction="#recipeAnchorPane" text="Ok" />-->
       <TextField fx:id="mainIngredientTextField" layoutX="427.0" layoutY="118.0" prefHeight="26.0" prefWidth="157.0" />
       <Label fx:id="mainIngredient" layoutX="324.0" layoutY="123.0" prefHeight="18.0" prefWidth="105.0" text="Main ingredient" textFill="WHITE" />
+      <Button fx:id="back" layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="26.0" prefWidth="53.0" text="Back" />
         </children>
 
 </AnchorPane>

@@ -81,6 +81,11 @@ public class MealsController {
     MainController mainController = new MainController();
     String newUrl;
 
+    public void onBackButtonClick(ActionEvent event) throws IOException {
+        MainController mainController = new MainController();
+        mainController.changeScene("hello-view.fxml", event);
+    }
+
     @FXML
     public void passInfo(ActionEvent event, String view) throws IOException {
         System.out.println("Wchodze do passInfo");

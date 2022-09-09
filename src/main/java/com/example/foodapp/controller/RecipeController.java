@@ -1,8 +1,10 @@
 package com.example.foodapp.controller;
 
 import com.example.foodapp.Main;
+import com.example.foodapp.MainController;
 import com.example.foodapp.model.Recipe;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -90,5 +92,10 @@ public class RecipeController implements Initializable {
             listRecipes.add(recipe);
         }
         return listRecipes;
+    }
+
+    public void onBackButtonClick(ActionEvent event) throws IOException {
+        MainController mainController = new MainController();
+        mainController.changeScene("hello-view.fxml", event);
     }
 }
