@@ -75,6 +75,7 @@ public class MealsController {
 
     public Stage stage;
     MainController mainController = new MainController();
+    String newUrl;
 
     @FXML
     public void passInfo(ActionEvent event, String chosenItem, String view) throws IOException {
@@ -85,7 +86,7 @@ public class MealsController {
         RecipeController recipeController = new RecipeController();
 
         recipeController = FXMLloader.getController();
-        recipeController.getElementsToRecipe(chosenItem, listofIngredient, url);
+        recipeController.getElementsToRecipe(chosenItem, listofIngredient, newUrl);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
@@ -137,6 +138,7 @@ public class MealsController {
                 System.out.println("list of ingredient: " + listofIngredient);
             }
             url = images.toString();
+            newUrl = url.replace("\"", "");
             System.out.println("lebTit: " + lebTit);
 
             Platform.runLater(() ->{
