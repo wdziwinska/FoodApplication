@@ -1,0 +1,29 @@
+.root{
+    -fx-background-color: #460c0c;
+}
+
+.text-field{
+    -fx-background-color: grey;
+    -fx-border-color:black;
+}
+
+.button {
+    -fx-background-color: grey;
+    -fx-border-color:black;
+    -fx-border-width: 2;
+    -fx-padding:5;
+    -fx-text-fill: #000000;
+    -fx-font-size:12;
+}
+
+.button:hover {
+    -fx-background-color: #0181e2ff;
+}
+
+.combo-box{
+    -fx-background-color: #bdbdbd;
+}
+
+.combo-box:pressed{
+    -fx-background-color: #0181e2ff;
+}

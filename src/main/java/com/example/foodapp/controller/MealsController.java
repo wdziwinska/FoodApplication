@@ -92,6 +92,7 @@ public class MealsController {
         FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource(view));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(FXMLloader.load());
+        scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
         RecipeController recipeController = new RecipeController();
 
         recipeController = FXMLloader.getController();
