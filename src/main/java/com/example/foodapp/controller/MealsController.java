@@ -24,7 +24,6 @@ import java.util.ArrayList;
 public class MealsController {
 
     Api api = new Api();
-    ApiController apiController = new ApiController(api);
 
     public String query = "";
     private String qValue;
@@ -63,10 +62,6 @@ public class MealsController {
     @FXML
     private TextField mainIngredientTextField;
 
-    RecipeController recipeController = new RecipeController();
-
-    public String path;
-
     public ArrayList<String> namesList = new ArrayList<String>();
     public ArrayList<String> urlsList = new ArrayList<String>();
     public ArrayList<String> imagesUrlList = new ArrayList<String>();;
@@ -80,8 +75,6 @@ public class MealsController {
 //    }
 
     public Stage stage;
-    MainController mainController = new MainController();
-    String newUrl;
 
     public void onBackButtonClick(ActionEvent event) throws IOException {
         MainController mainController = new MainController();
@@ -103,23 +96,10 @@ public class MealsController {
         stage.setResizable(false);
         stage.show();
         System.out.println("Wychodze z passInfo");
-
-        ////        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("recipes-view.fxml"));
-//////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-////        Scene scene = new Scene(fxmlLoader.load());
-////
-////        RecipeController controller = new RecipeController();
-////        controller = fxmlLoader.getController();
-////        controller.getElementsToRecipe("test");
-////        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-////        stage.setScene(scene);
-////        stage.setResizable(false);
-////        stage.show();
     }
 
     public void getJsonObject(String qValue, String query, ActionEvent event){
 
-        System.out.println("Wchodze do getJesonObject");
         new Thread(() -> {
             try {
                 JsonObject jsonObject;
@@ -144,16 +124,14 @@ public class MealsController {
                         System.out.println("url: " + url);
 
                         for(int j = 0; j < ingredientLines.size(); j++){
-                          listofIngredient.add(ingredientLines.get(j).toString());
+                          listofIngredient.add(ingredientLines.get(j).toString().replace("\"", ""));
                         }
-                        path = images.toString();
-                        newUrl = path.replace("\"", "");
 
-                        namesList.add(label.toString());
-                        imagesUrlList.add(newUrl);
+                        namesList.add(label.toString().replace("\"", ""));
+                        imagesUrlList.add(images.toString().replace("\"", ""));
                         ingredientsList.add(i, listofIngredient);
-                        urlsList.add(url.toString());
-                        caloriesList.add(calories.toString());
+                        urlsList.add(url.toString().replace("\"", ""));
+                        caloriesList.add(calories.toString().replace("\"", ""));
                     }
                 }
             }catch (Exception e) {
@@ -171,9 +149,6 @@ public class MealsController {
                     e.printStackTrace();
                 }
             });
-
-            System.out.println("Wychodze z getJesonObject");
-//            recipeController.getElementsToRecipe(lebTit);
         }).start();
     }
 
@@ -186,11 +161,6 @@ public class MealsController {
         stage.show();
     }
 
-//    @FXML
-//    protected void recipeAnchorPane(ActionEvent event) throws IOException {
-//        OkButtonClick(event);
-////        changeScene("recipes-view.fxml", event);
-//    }
 
     public void OkButtonClick(ActionEvent event) throws IOException {
         System.out.println("Wchodze do OkButtonClick");
