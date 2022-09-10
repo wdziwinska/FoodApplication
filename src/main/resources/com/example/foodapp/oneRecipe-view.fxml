@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -10,7 +11,12 @@
 
 <HBox prefHeight="96.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.OneRecipeViewController">
    <children>
-      <ImageView fx:id="image" fitHeight="86.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="favourites" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addToFavourites" prefHeight="20.0" prefWidth="42.0" text="fav" textOverrun="CLIP">
+         <HBox.margin>
+            <Insets left="3.0" right="3.0" top="30.0" />
+         </HBox.margin>
+      </Button>
+      <ImageView fx:id="image" fitHeight="95.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
          <HBox.margin>
             <Insets left="4.0" />
          </HBox.margin></ImageView>
@@ -20,7 +26,7 @@
          </font></Label>
       <ListView fx:id="lsIngredients" prefHeight="96.0" prefWidth="386.0" />
       <Label fx:id="calories" alignment="CENTER" prefHeight="95.0" prefWidth="89.0" text="Label" />
-      <Hyperlink fx:id="hyperlink" onAction="#onHyperlinkClick" prefHeight="24.0" prefWidth="180.0" text="Hyperlink" textAlignment="CENTER"/>
+      <Hyperlink fx:id="hyperlink" onAction="#onHyperlinkClick" prefHeight="24.0" prefWidth="180.0" text="Hyperlink" textAlignment="CENTER" />
    </children>
    <opaqueInsets>
       <Insets left="5.0" right="5.0" top="5.0" />

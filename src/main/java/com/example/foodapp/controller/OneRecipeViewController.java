@@ -1,5 +1,6 @@
 package com.example.foodapp.controller;
 
+import com.example.foodapp.database.DataBase;
 import com.example.foodapp.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class OneRecipeViewController implements Initializable {
@@ -36,6 +38,13 @@ public class OneRecipeViewController implements Initializable {
 
     public String trueUrl;
 
+    public String nameChosen;
+//    public String
+    public String imageUrlChosen;
+    public String ingredientsChosen;
+    public String caloriesChosen;
+    public String urlChosen;
+
     public void setData(Recipe recipe){
         image.setImage(new Image(recipe.getImageSoruce()));
         title.setText(recipe.getName());
@@ -44,10 +53,28 @@ public class OneRecipeViewController implements Initializable {
         calories.setText(recipe.getCalories());
 
         trueUrl = recipe.getUrl();
+
+        nameChosen = recipe.getName();
+        imageUrlChosen = recipe.getImageSoruce();
+//        ingredientsChosen = recipe.getIngredients();
+        caloriesChosen = recipe.getCalories();
+        urlChosen = recipe.getUrl();
     }
 
     public void onHyperlinkClick() throws URISyntaxException, IOException {
         Desktop.getDesktop().browse(new URI(trueUrl.replace("\"", "")));
+    }
+
+    public void addToFavourites() throws SQLException {
+        System.out.println("Dodano do ulubionych");
+        System.out.println("wybrano: " + nameChosen);
+        System.out.println("wybrano: " + imageUrlChosen);
+        System.out.println("wybrano: " + ingredientsChosen);
+        System.out.println("wybrano: " + caloriesChosen);
+        System.out.println("wybrano: " + urlChosen);
+
+        DataBase db = DataBase.getInstance();
+        db.insertIntoMeals(nameChosen, imageUrlChosen, ingredientsChosen, caloriesChosen, urlChosen);
     }
 
     @Override
