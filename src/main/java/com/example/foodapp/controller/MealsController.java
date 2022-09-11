@@ -78,7 +78,7 @@ public class MealsController {
 
     public void onBackButtonClick(ActionEvent event) throws IOException {
         MainController mainController = new MainController();
-        mainController.changeScene("hello-view.fxml", event);
+        mainController.changeScene("main-view.fxml", event);
     }
 
     @FXML

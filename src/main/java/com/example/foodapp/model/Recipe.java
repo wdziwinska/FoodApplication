@@ -50,4 +50,12 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
+    public ArrayList<String> getIngredient() {
+        return ingredients;
+    }
+
+    public void setIngredient(ArrayList<String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
 }

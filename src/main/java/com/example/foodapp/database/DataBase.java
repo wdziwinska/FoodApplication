@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Properties;
 
@@ -40,7 +41,6 @@ public class DataBase {
 
     public void connect(){
         try {
-
             connection = DriverManager.getConnection(url+dbName, uname, password);
             System.out.println("connection succeseful");
         } catch (SQLException e) {
@@ -57,7 +57,7 @@ public class DataBase {
 
     }
 
-    public void insertIntoMeals(String name, String imageUrl, String ingredients, String calories, String urlRecipe) throws SQLException {
+    public void insertIntoMeals(String name, String imageUrl, ArrayList<String> ingredients, String calories, String urlRecipe) throws SQLException {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from meals where name like '"+name+"'");
         if (!resultSet.next()){
@@ -118,7 +118,7 @@ public class DataBase {
                         "`id` INT NOT NULL AUTO_INCREMENT,"+
                         "`name` VARCHAR(100) NOT NULL,"+
                         "`imageUrl` VARCHAR(5000) NOT NULL,"+
-                        "`ingredients` VARCHAR(100) NOT NULL,"+
+                        "`ingredients` VARCHAR(2000) NOT NULL,"+
                         "`calories` VARCHAR(50) NOT NULL,"+
                         "`urlRecipe` VARCHAR(5000) NOT NULL,"+
                         "PRIMARY KEY (`id`)"+
