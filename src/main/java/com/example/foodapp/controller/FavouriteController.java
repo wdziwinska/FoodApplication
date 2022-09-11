@@ -4,13 +4,17 @@ import com.example.foodapp.Main;
 import com.example.foodapp.MainController;
 import com.example.foodapp.database.DataBase;
 import com.example.foodapp.model.Recipe;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +26,9 @@ import java.util.ResourceBundle;
 
 public class FavouriteController implements Initializable {
 
+
+    @FXML
+    private AnchorPane loading;
     @FXML
     private VBox recipesLayout;
 
@@ -44,14 +51,23 @@ public class FavouriteController implements Initializable {
         System.out.println(".. wchodze do favMain");
         new Thread(()->{
             try {
+                RotateTransition rotate = new RotateTransition();
+                rotate.setNode(loading);
+                rotate.setDuration(Duration.millis(1000));
+                rotate.setByAngle(360);
+                rotate.setCycleCount(TranslateTransition.INDEFINITE);
+                rotate.play();
+                loading.setVisible(true);
+
                 getMeals();
             } catch (Exception e){
                 e.printStackTrace();
             }
+            Platform.runLater(() ->{
+                getOneFav();
+                loading.setVisible(false);
+            });
         }).start();
-//        Platform.runLater(() ->{
-//            getOneFav();
-//        });
         System.out.println(".. wychodze z favMain");
     }
 
@@ -59,12 +75,15 @@ public class FavouriteController implements Initializable {
 
         System.out.println(".. wchodze do getOneFav");
         List<Recipe> recipes = new ArrayList<>(recipes());
+        loading.setVisible(false);
 
-        Platform.runLater(() ->{
+//        Platform.runLater(() ->{
             for (int i = 0; i<recipes.size(); i++){
                 FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource("oneFavourite-view.fxml"));
 
                 try {
+                    loading.setVisible(false);
+
                     HBox hBox = FXMLloader.load();
                     OneFavouriteController oneFavouriteController = FXMLloader.getController();
                     oneFavouriteController.setData(recipes.get(i));
@@ -74,7 +93,7 @@ public class FavouriteController implements Initializable {
                     e.printStackTrace();
                 }
             }
-        });
+//        });
 
         System.out.println(".. wychodze z getOneFav");
     }
@@ -114,7 +133,7 @@ public class FavouriteController implements Initializable {
             urlsRecipe.add(meals.getString("urlRecipe"));
         }
         System.out.println(".. wychodze z getMeals");
-        getOneFav();
+//        getOneFav();
     }
 
     public void onBackButtonClick(ActionEvent event) throws IOException {

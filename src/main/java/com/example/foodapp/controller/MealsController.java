@@ -7,6 +7,8 @@ import com.example.foodapp.api.ApiController;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +18,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,6 +48,8 @@ public class MealsController {
     public String app_id = "6030db9a";
     public String app_key = "facae2fab72ad57305feb9521499cb04";
 
+    @FXML
+    private AnchorPane loading;
     @FXML
     private Label labelTest;
 
@@ -102,6 +108,14 @@ public class MealsController {
 
         new Thread(() -> {
             try {
+                RotateTransition rotate = new RotateTransition();
+                rotate.setNode(loading);
+                rotate.setDuration(Duration.millis(1000));
+                rotate.setByAngle(360);
+                rotate.setCycleCount(TranslateTransition.INDEFINITE);
+                rotate.play();
+                loading.setVisible(true);
+
                 JsonObject jsonObject;
                 if (qValue != null) {
                     jsonObject = ApiController.get("v2?type=public", "&q=" + qValue + "&app_id=" + app_id + "&app_key=" + app_key + query + "&imageSize=REGULAR");
@@ -143,6 +157,7 @@ public class MealsController {
             System.out.println("myingredientLines: " + ingredientLines);
 
             Platform.runLater(() ->{
+                loading.setVisible(false);
                 try {
                     passInfo(event, "recipes-view.fxml");
                 } catch (IOException e) {
@@ -162,11 +177,38 @@ public class MealsController {
     }
 
 
+    @FXML
     public void OkButtonClick(ActionEvent event) throws IOException {
         System.out.println("Wchodze do OkButtonClick");
         qValue = mainIngredientTextField.getText();
         System.out.println("q value: " + qValue);
         getJsonObject(qValue, getQuery(), event);
+
+//        new Thread(() -> {
+//            try {
+//                RotateTransition rotate = new RotateTransition();
+//                rotate.setNode(loading);
+//                rotate.setDuration(Duration.millis(1000));
+//                rotate.setByAngle(360);
+//                rotate.setCycleCount(TranslateTransition.INDEFINITE);
+//                rotate.play();
+//                loading.setVisible(true);
+//
+//
+//            }catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//            Platform.runLater(() ->{
+//
+//                try {
+//                    loading.setVisible(false);
+//                    passInfo(event, "recipes-view.fxml");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            });
+//        }).start();
+
         query="";
         System.out.println("Wychodze z OkButtonClick");
     }
