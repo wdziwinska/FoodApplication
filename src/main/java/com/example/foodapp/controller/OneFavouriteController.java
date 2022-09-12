@@ -1,5 +1,6 @@
 package com.example.foodapp.controller;
 
+import com.example.foodapp.database.DataBase;
 import com.example.foodapp.model.Recipe;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,12 +9,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class OneFavouriteController implements Initializable {
@@ -29,6 +32,8 @@ public class OneFavouriteController implements Initializable {
     private Hyperlink hyperlink;
     @FXML
     private Label calories;
+    @FXML
+    private HBox hBoxData;
 
     public String trueUrl;
 
@@ -37,6 +42,8 @@ public class OneFavouriteController implements Initializable {
     public String ingredientsChosen;
     public String caloriesChosen;
     public String urlChosen;
+
+    DataBase db= DataBase.getInstance();
 
     public void setData(Recipe recipe){
         System.out.println("... ustawiam danne w SetData xd");
@@ -58,6 +65,21 @@ public class OneFavouriteController implements Initializable {
 
     public void onHyperlinkClick() throws URISyntaxException, IOException {
         Desktop.getDesktop().browse(new URI(trueUrl.replace("\"", "")));
+    }
+
+    @FXML
+    public void onDeleteButtonClick() throws SQLException {
+
+        System.out.println("NAcisnieto delete");
+        System.out.println("wybrano: " + nameChosen);
+
+        db.delete("meals", nameChosen);
+        db.delete("meals", lsIngredients.toString());
+        db.delete("meals", imageUrlChosen);
+        db.delete("meals", urlChosen);
+        db.delete("meals", caloriesChosen);
+
+
     }
 
     @Override
