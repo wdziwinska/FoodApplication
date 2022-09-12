@@ -157,9 +157,9 @@ public class MealsController {
             System.out.println("myingredientLines: " + ingredientLines);
 
             Platform.runLater(() ->{
-                loading.setVisible(false);
                 try {
                     passInfo(event, "recipes-view.fxml");
+                    loading.setVisible(false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -42,6 +42,7 @@ public class FavouriteController implements Initializable {
 
     DataBase db = DataBase.getInstance();
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -59,7 +60,7 @@ public class FavouriteController implements Initializable {
                 rotate.play();
                 loading.setVisible(true);
 
-                getMeals();
+                getMealsFromDB();
             } catch (Exception e){
                 e.printStackTrace();
             }
@@ -82,12 +83,12 @@ public class FavouriteController implements Initializable {
                 FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource("oneFavourite-view.fxml"));
 
                 try {
-                    loading.setVisible(false);
-
                     HBox hBox = FXMLloader.load();
                     OneFavouriteController oneFavouriteController = FXMLloader.getController();
                     oneFavouriteController.setData(recipes.get(i));
                     recipesLayout.getChildren().add(hBox);
+
+//                    loading.setVisible(false);
 
                 }catch(IOException e){
                     e.printStackTrace();
@@ -118,10 +119,13 @@ public class FavouriteController implements Initializable {
         return listRecipes;
     }
 
-    public void getMeals() throws SQLException {
+    public void getMealsFromDB() throws SQLException {
         System.out.println(".. wchodze do getMeals");
         meals = db.getAll("meals");
         int i=0;
+
+//        totalSize = Integer(meals.getFetchSize());
+//        latch = new CountDownLatch(totalSize);
 
         while (meals.next()){
             System.out.println("test db: " + meals.getString("name"));

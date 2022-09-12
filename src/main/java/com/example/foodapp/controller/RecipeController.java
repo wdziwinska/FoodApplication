@@ -3,6 +3,8 @@ package com.example.foodapp.controller;
 import com.example.foodapp.Main;
 import com.example.foodapp.MainController;
 import com.example.foodapp.model.Recipe;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +14,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +41,8 @@ public class RecipeController implements Initializable {
     private ListView<String> listOfIngredients;
     @FXML
     private VBox recipesLayout;
+    @FXML
+    private AnchorPane loading;
 
     public ArrayList<String> name;
     public ArrayList<String> imageUrl;
@@ -58,6 +64,14 @@ public class RecipeController implements Initializable {
         urlsRecipe = urls;
         calories = caloriesList;
 
+        RotateTransition rotate = new RotateTransition();
+        rotate.setNode(loading);
+        rotate.setDuration(Duration.millis(1000));
+        rotate.setByAngle(360);
+        rotate.setCycleCount(TranslateTransition.INDEFINITE);
+        rotate.play();
+        loading.setVisible(true);
+
         List<Recipe> recipes = new ArrayList<>(recipes());
 
         Platform.runLater(() ->{
@@ -71,7 +85,7 @@ public class RecipeController implements Initializable {
                     OneRecipeViewController oneRecipeViewController = FXMLloader.getController();
                     oneRecipeViewController.setData(recipes.get(i));
                     recipesLayout.getChildren().add(hBox);
-
+                    loading.setVisible(false);
 
                 }catch(IOException e){
                     e.printStackTrace();
