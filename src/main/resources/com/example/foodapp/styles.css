@@ -7,14 +7,14 @@
     -fx-border-color:black;
 }
 
-.button {
-    -fx-background-color: grey;
-    -fx-border-color:black;
-    -fx-border-width: 2;
-    -fx-padding:5;
-    -fx-text-fill: #000000;
-    -fx-font-size:12;
-}
+/*.button {*/
+/*    -fx-background-color: grey;*/
+/*    -fx-border-color:black;*/
+/*    -fx-border-width: 2;*/
+/*    -fx-padding:5;*/
+/*    -fx-text-fill: #000000;*/
+/*    -fx-font-size:12;*/
+/*}*/
 
 .button:hover {
     -fx-background-color: #0181e2ff;
@@ -26,4 +26,14 @@
 
 .combo-box:pressed{
     -fx-background-color: #0181e2ff;
+}
+
+.popup {
+    -fx-background-color: black;
+    -fx-border-color:yellow;
+    -fx-border-width: 1;
+    -fx-font-weight: bold;
+    -fx-padding:10;
+    -fx-text-fill: yellow;
+    -fx-font-size:16;
 }

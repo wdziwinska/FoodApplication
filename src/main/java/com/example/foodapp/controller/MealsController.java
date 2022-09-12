@@ -4,6 +4,7 @@ import com.example.foodapp.Main;
 import com.example.foodapp.MainController;
 import com.example.foodapp.api.Api;
 import com.example.foodapp.api.ApiController;
+import com.example.foodapp.components.Message;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -181,8 +182,15 @@ public class MealsController {
     public void OkButtonClick(ActionEvent event) throws IOException {
         System.out.println("Wchodze do OkButtonClick");
         qValue = mainIngredientTextField.getText();
-        System.out.println("q value: " + qValue);
-        getJsonObject(qValue, getQuery(), event);
+        if (qValue != ""){
+            System.out.println("q value: " + qValue);
+            getJsonObject(qValue, getQuery(), event);
+        }
+        else{
+            System.out.println("You should type main ingredient");
+            Message.showPopupMessage("You should type main ingredient",(Stage)((Node)event.getSource()).getScene().getWindow());
+
+        }
 
 //        new Thread(() -> {
 //            try {
