@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<AnchorPane prefHeight="605.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.DrinksController">
+   <children>
+      <TextField fx:id="mainIngredientTextField" layoutX="406.0" layoutY="181.0" prefHeight="26.0" prefWidth="157.0" />
+      <Label fx:id="mainIngredient" layoutX="303.0" layoutY="186.0" prefHeight="18.0" prefWidth="105.0" text="Main ingredient" textFill="#515151" />
+
+      <Label layoutX="303.0" layoutY="226.0" prefHeight="18.0" prefWidth="63.0" text="dish type" textFill="#616161" />
+      <ComboBox fx:id="dishTypeDrinksComboBox" layoutX="410.0" layoutY="222.0" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="alcohol cocktail" />
+               <String fx:value="drinks" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+
+      <Label layoutX="303.0" layoutY="256.0" text="cuisine type" textFill="#616161" />
+      <ComboBox fx:id="cuisineTypeDrinksComboBox" layoutX="410.0" layoutY="252.0" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="American" />
+               <String fx:value="Asian" />
+               <String fx:value="British" />
+               <String fx:value="Caribbean" />
+               <String fx:value="Central Europe" />
+               <String fx:value="Chinese" />
+               <String fx:value="Eastern Europe" />
+               <String fx:value="French" />
+               <String fx:value="Indian" />
+               <String fx:value="Italian" />
+               <String fx:value="Japanese" />
+               <String fx:value="Kosher" />
+               <String fx:value="Mediterranean" />
+               <String fx:value="Mexican" />
+               <String fx:value="Middle Eastern" />
+               <String fx:value="Nordic" />
+               <String fx:value="South American" />
+               <String fx:value="South East Asian" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+
+      <Label layoutX="303.0" layoutY="289.0" text="health" textFill="#616161" />
+      <ComboBox fx:id="healthDrinksComboBox" layoutX="410.0" layoutY="285.0" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="Alcohol-Cocktail" />
+               <String fx:value="Alcohol-Free" />
+               <String fx:value="Dairy-Free " />
+               <String fx:value="Immuno-Supportive" />
+               <String fx:value="Low Potassium" />
+               <String fx:value="Low Sugar " />
+               <String fx:value="Mediterranean " />
+               <String fx:value="Peanut-Free" />
+               <String fx:value="Vegan" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+
+      <Label layoutX="425.0" layoutY="50.0" prefHeight="27.0" prefWidth="63.0" text="Drinks">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="OkButton" layoutX="441.0" layoutY="358.0" mnemonicParsing="false" onAction="#OkButtonClick" text="Ok" />
+   </children>
+   <AnchorPane fx:id="loading" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0" prefWidth="93.0" visible="false" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <Circle fx:id="circleSmall" fill="#a1a1a1" layoutX="56.0" layoutY="18.0" radius="9.0" stroke="#a1a1a1" strokeType="INSIDE" />
+         <Circle fx:id="circleMedium" fill="#a1a1a1" layoutX="79.0" layoutY="39.0" radius="9.0" stroke="#a1a1a1" strokeType="INSIDE" />
+         <Circle fx:id="circleLarge" fill="#a1a1a1" layoutX="68.0" layoutY="76.0" radius="9.0" stroke="#a1a1a1" strokeType="INSIDE" />
+         <Circle fx:id="circleMedium1" fill="#a1a1a1" layoutX="30.0" layoutY="86.0" radius="9.0" stroke="#a1a1a1" strokeType="INSIDE" />
+      </children>
+   </AnchorPane>
+</AnchorPane>

@@ -30,12 +30,12 @@ public class MainController {
     }
 
     @FXML
-    protected void drinkAnchorPane(ActionEvent event) throws IOException {
-        changeScene("drink-view.fxml", event);
+    protected void drinksButtonClick(ActionEvent event) throws IOException {
+        changeScene("drinks-view.fxml", event);
     }
 
     @FXML
-    protected void sweatsAnchorPane(ActionEvent event) throws IOException {
+    protected void dessertsButtonClick(ActionEvent event) throws IOException {
         changeScene("dessert-view.fxml", event);
     }
 

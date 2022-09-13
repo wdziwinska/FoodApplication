@@ -17,6 +17,8 @@
       </Label>
 
       <Button layoutX="133.0" layoutY="172.0" mnemonicParsing="false" onAction="#mealsButtonClick" text="Meals" />
+      <Button fx:id="drinks" layoutX="132.0" layoutY="360.0" mnemonicParsing="false" onAction="#drinksButtonClick" text="Drinks" />
+      <Button fx:id="desserts" layoutX="126.0" layoutY="429.0" mnemonicParsing="false" onAction="#dessertsButtonClick" text="Desserts" />
 
       <Label layoutX="334.0" layoutY="129.0" prefHeight="18.0" prefWidth="70.0" text="Drinks" textFill="WHITE" />
       <AnchorPane layoutX="319.0" layoutY="155.0" prefHeight="435.0" prefWidth="294.0">
