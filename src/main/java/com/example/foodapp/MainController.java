@@ -36,7 +36,7 @@ public class MainController {
 
     @FXML
     protected void dessertsButtonClick(ActionEvent event) throws IOException {
-        changeScene("dessert-view.fxml", event);
+        changeScene("desserts-view.fxml", event);
     }
 
     @FXML

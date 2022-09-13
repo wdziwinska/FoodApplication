@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="605.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.DessertsController">
+   <children>
+       <TextField fx:id="mainIngredientTextField" layoutX="429.0" layoutY="182.0" prefHeight="26.0" prefWidth="157.0" />
+       <Label fx:id="mainIngredient" layoutX="326.0" layoutY="187.0" prefHeight="18.0" prefWidth="105.0" text="Main ingredient" textFill="#515151" />
+
+      <Label layoutX="327.0" layoutY="227.0" prefHeight="18.0" prefWidth="75.0" text="diet" />
+      <ComboBox fx:id="dietDessertsComboBox" layoutX="434.0" layoutY="223.0" prefWidth="150.0">
+         <items>
+            <FXCollections fx:factory="observableArrayList">
+               <String fx:value="low-sodium" />
+               <String fx:value="high-protein" />
+               <String fx:value="low-carb" />
+               <String fx:value="high-fiber" />
+               <String fx:value="balanced" />
+            </FXCollections>
+         </items>
+      </ComboBox>
+      <Label layoutX="327.0" layoutY="264.0" text="health" />
+      <ComboBox fx:id="healthDessertsComboBox" layoutX="434.0" layoutY="260.0" prefWidth="150.0">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Alcohol-Free" />
+                  <String fx:value="Dairy-Free " />
+                  <String fx:value="Egg-Free" />
+                  <String fx:value="Gluten-Free" />
+                  <String fx:value="Immuno-Supportive" />
+                  <String fx:value="Keto-Friendly" />
+                  <String fx:value="Low Potassium" />
+                  <String fx:value="Low Sugar " />
+                  <String fx:value="Lupine-Free " />
+                  <String fx:value="Mediterranean " />
+                  <String fx:value="No oil added " />
+                  <String fx:value="Peanut-Free" />
+                  <String fx:value="Sesame-Free" />
+                  <String fx:value="Soy-Free " />
+                  <String fx:value="Tree-Nut-Free" />
+                  <String fx:value="Vegan" />
+                  <String fx:value="Wheat-Free" />
+              </FXCollections>
+          </items>
+      </ComboBox>
+      <Label layoutX="327.0" layoutY="296.0" text="cuisine type" />
+      <ComboBox fx:id="cuisineTypeDessertsComboBox" layoutX="434.0" layoutY="292.0" prefWidth="150.0">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="American" />
+                  <String fx:value="Asian" />
+                  <String fx:value="British" />
+                  <String fx:value="Caribbean" />
+                  <String fx:value="Central Europe" />
+                  <String fx:value="Chinese" />
+                  <String fx:value="Eastern Europe" />
+                  <String fx:value="French" />
+                  <String fx:value="Indian" />
+                  <String fx:value="Italian" />
+                  <String fx:value="Japanese" />
+                  <String fx:value="Kosher" />
+                  <String fx:value="Mediterranean" />
+                  <String fx:value="Mexican" />
+                  <String fx:value="Middle Eastern" />
+                  <String fx:value="Nordic" />
+                  <String fx:value="South American" />
+                  <String fx:value="South East Asian" />
+              </FXCollections>
+          </items>
+      </ComboBox>
+      <Label layoutX="421.0" layoutY="106.0" text="Desserts">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+       <Button fx:id="OkButton" layoutX="441.0" layoutY="369.0" mnemonicParsing="false" onAction="#OkButtonClick" text="Ok" />
+
+   </children>
+</AnchorPane>

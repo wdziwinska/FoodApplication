@@ -116,6 +116,6 @@ public class RecipeController implements Initializable {
 
     public void onBackButtonClick(ActionEvent event) throws IOException {
         MainController mainController = new MainController();
-        mainController.changeScene("meals-view.fxml", event);
+        mainController.changeScene("main-view.fxml", event);
     }
 }
