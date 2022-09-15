@@ -9,8 +9,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="605.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.DessertsController">
+<AnchorPane prefHeight="605.0" prefWidth="913.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.DessertsController">
    <children>
+       <Button fx:id="back" layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="32.0" prefWidth="78.0" text="Back" textAlignment="CENTER"/>
+
        <TextField fx:id="mainIngredientTextField" layoutX="429.0" layoutY="182.0" prefHeight="26.0" prefWidth="157.0" />
        <Label fx:id="mainIngredient" layoutX="326.0" layoutY="187.0" prefHeight="18.0" prefWidth="105.0" text="Main ingredient" textFill="#515151" />
 

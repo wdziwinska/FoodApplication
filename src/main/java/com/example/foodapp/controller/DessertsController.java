@@ -178,5 +178,8 @@ public class DessertsController {
         stage.show();
         System.out.println("Wychodze z passInfo");
     }
-
+    public void onBackButtonClick(ActionEvent event) throws IOException {
+        MainController mainController = new MainController();
+        mainController.changeScene("main-view.fxml", event);
+    }
 }
