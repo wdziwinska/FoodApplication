@@ -40,7 +40,6 @@ public class OneRecipeViewController implements Initializable {
     public String trueUrl;
 
     public String nameChosen;
-//    public String
     public String imageUrlChosen;
     public ArrayList<String> ingredientsChosen;
     public String caloriesChosen;

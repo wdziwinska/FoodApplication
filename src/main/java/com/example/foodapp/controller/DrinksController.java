@@ -129,29 +129,26 @@ public class DrinksController {
                         ArrayList<String> listofIngredient = new ArrayList<String>();
                         int finalI = i;
 
-//                        new Thread(() -> {
+                        zero = hits.get(finalI).getAsJsonObject();
+                        recipe = zero.get("recipe").getAsJsonObject();
+                        label = recipe.getAsJsonPrimitive("label");
+                        images = recipe.getAsJsonPrimitive("image");
+                        ingredientLines = recipe.getAsJsonArray("ingredientLines");
+                        url = recipe.getAsJsonPrimitive("url");
+                        calories = recipe.getAsJsonPrimitive("calories");
 
-                            zero = hits.get(finalI).getAsJsonObject();
-                            recipe = zero.get("recipe").getAsJsonObject();
-                            label = recipe.getAsJsonPrimitive("label");
-                            images = recipe.getAsJsonPrimitive("image");
-                            ingredientLines = recipe.getAsJsonArray("ingredientLines");
-                            url = recipe.getAsJsonPrimitive("url");
-                            calories = recipe.getAsJsonPrimitive("calories");
-
-                            System.out.println("url: " + url);
+                        System.out.println("url: " + url);
 
 
-                            for(int j = 0; j < ingredientLines.size(); j++){
-                                listofIngredient.add(ingredientLines.get(j).toString().replace("\"", ""));
-                            }
+                        for(int j = 0; j < ingredientLines.size(); j++){
+                            listofIngredient.add(ingredientLines.get(j).toString().replace("\"", ""));
+                        }
 
-                            namesList.add(label.toString().replace("\"", ""));
-                            imagesUrlList.add(images.toString().replace("\"", ""));
-                            ingredientsList.add(finalI, listofIngredient);
-                            urlsList.add(url.toString().replace("\"", ""));
-                            caloriesList.add(calories.toString().replace("\"", ""));
-//                        }).start();
+                        namesList.add(label.toString().replace("\"", ""));
+                        imagesUrlList.add(images.toString().replace("\"", ""));
+                        ingredientsList.add(finalI, listofIngredient);
+                        urlsList.add(url.toString().replace("\"", ""));
+                        caloriesList.add(calories.toString().replace("\"", ""));
                     }
                 }
             }catch (Exception e) {

@@ -14,13 +14,8 @@ public class Api {
 
     public JsonObject requestBuilder(String path, String query) throws Exception {
         HttpGet httpget;
-//        if (query == null) {
-            httpget = new HttpGet("https://api.edamam.com/api/recipes/" + path + query);
+        httpget = new HttpGet("https://api.edamam.com/api/recipes/" + path + query);
         System.out.println("hhtpGet: " + httpget);
-//        }
-//        else {
-//            httpget = new HttpGet("https://api.edamam.com/api/recipes/v2?type=public" + qValue + "/" + query);
-//        }
         return getRequest(httpget);
     }
 

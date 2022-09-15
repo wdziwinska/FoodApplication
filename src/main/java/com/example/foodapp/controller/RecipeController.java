@@ -61,27 +61,15 @@ public class RecipeController implements Initializable {
         urlsRecipe = urls;
         calories = caloriesList;
 
-//        RotateTransition rotate = new RotateTransition();
-//        rotate.setNode(loading);
-//        rotate.setDuration(Duration.millis(1000));
-//        rotate.setByAngle(360);
-//        rotate.setCycleCount(TranslateTransition.INDEFINITE);
-//        rotate.play();
-//        loading.setVisible(true);
-
         List<Recipe> recipes = new ArrayList<>(recipes());
 
         Platform.runLater(() ->{
             for (int i = 0; i<recipes.size(); i++){
-//                FXMLLoader FXMLloader = new FXMLLoader();
-//                FXMLloader.setLocation(getClass().getResource("oneRecipe-view.fxml"));
+
                 FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource("oneRecipe-view.fxml"));
 
                 try {
                     HBox hBox = FXMLloader.load();
-//                    hBox.getStylesheets().add(getClass().getResource("resources/com/example/foodapp/styles.css").toExternalForm());
-//                    hBox.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-//                    hBox.getStyleClass().add("styles.css");
                     OneRecipeViewController oneRecipeViewController = FXMLloader.getController();
                     oneRecipeViewController.setData(recipes.get(i));
                     recipesLayout.getChildren().add(hBox);
@@ -105,9 +93,7 @@ public class RecipeController implements Initializable {
             recipe.setIngredients(lsOfIngredients.get(i));
             recipe.setImageSoruce(imageUrl.get(i));
             recipe.setUrl(urlsRecipe.get(i));
-//            recipe.setCalories(calories.get(i));
             recipe.setCalories(calories.get(i).split("\\.")[0]);
-//            recipe.setCalories(calories.get(i).slice(0, calories.get(i).lastIndexOf(".")));
 
             listRecipes.add(recipe);
         }

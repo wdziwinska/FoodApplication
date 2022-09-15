@@ -10,15 +10,14 @@ public class ApiController {
         this.api = api;
     }
 
-    public static JsonObject get(String path, String query){
+    public static JsonObject get(String path, String query) {
         JsonObject jsonObject = new JsonObject();
 
         try {
-            jsonObject = api.requestBuilder(path, query.replace(" ","%20"));
+            jsonObject = api.requestBuilder(path, query.replace(" ", "%20"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-     //   System.out.println(jsonObject);
         return jsonObject;
     }
 
