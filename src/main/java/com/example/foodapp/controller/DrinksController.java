@@ -1,6 +1,7 @@
 package com.example.foodapp.controller;
 
 import com.example.foodapp.Main;
+import com.example.foodapp.MainController;
 import com.example.foodapp.api.Api;
 import com.example.foodapp.api.ApiController;
 import com.example.foodapp.components.Message;
@@ -106,6 +107,7 @@ public class DrinksController {
     public void getJsonObject(String qValue, String query, ActionEvent event){
 
         new Thread(() -> {
+            System.out.println("New Thread in GetJson Drinks");
             try {
                 RotateTransition rotate = new RotateTransition();
                 rotate.setNode(loading);
@@ -125,26 +127,31 @@ public class DrinksController {
                 if (hits.size() > 0) {
                     for (int i= 0 ; i<hits.size(); i++) {
                         ArrayList<String> listofIngredient = new ArrayList<String>();
+                        int finalI = i;
 
-                        zero = hits.get(i).getAsJsonObject();
-                        recipe = zero.get("recipe").getAsJsonObject();
-                        label = recipe.getAsJsonPrimitive("label");
-                        images = recipe.getAsJsonPrimitive("image");
-                        ingredientLines = recipe.getAsJsonArray("ingredientLines");
-                        url = recipe.getAsJsonPrimitive("url");
-                        calories = recipe.getAsJsonPrimitive("calories");
+//                        new Thread(() -> {
 
-                        System.out.println("url: " + url);
+                            zero = hits.get(finalI).getAsJsonObject();
+                            recipe = zero.get("recipe").getAsJsonObject();
+                            label = recipe.getAsJsonPrimitive("label");
+                            images = recipe.getAsJsonPrimitive("image");
+                            ingredientLines = recipe.getAsJsonArray("ingredientLines");
+                            url = recipe.getAsJsonPrimitive("url");
+                            calories = recipe.getAsJsonPrimitive("calories");
 
-                        for(int j = 0; j < ingredientLines.size(); j++){
-                            listofIngredient.add(ingredientLines.get(j).toString().replace("\"", ""));
-                        }
+                            System.out.println("url: " + url);
 
-                        namesList.add(label.toString().replace("\"", ""));
-                        imagesUrlList.add(images.toString().replace("\"", ""));
-                        ingredientsList.add(i, listofIngredient);
-                        urlsList.add(url.toString().replace("\"", ""));
-                        caloriesList.add(calories.toString().replace("\"", ""));
+
+                            for(int j = 0; j < ingredientLines.size(); j++){
+                                listofIngredient.add(ingredientLines.get(j).toString().replace("\"", ""));
+                            }
+
+                            namesList.add(label.toString().replace("\"", ""));
+                            imagesUrlList.add(images.toString().replace("\"", ""));
+                            ingredientsList.add(finalI, listofIngredient);
+                            urlsList.add(url.toString().replace("\"", ""));
+                            caloriesList.add(calories.toString().replace("\"", ""));
+//                        }).start();
                     }
                 }
             }catch (Exception e) {
@@ -164,23 +171,31 @@ public class DrinksController {
                 }
             });
         }).start();
+        System.out.println("End Thread in GetJson Drinks");
     }
 
     @FXML
     public void passInfo(ActionEvent event, String view) throws IOException {
-        System.out.println("Wchodze do passInfo");
-        FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource(view));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(FXMLloader.load());
-        scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
-        RecipeController recipeController = new RecipeController();
+        Platform.runLater(() ->{
+            System.out.println("Wchodze do passInfo");
+            FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource(view));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            Scene scene = null;
+            try {
+                scene = new Scene(FXMLloader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
+            RecipeController recipeController = new RecipeController();
 
-        recipeController = FXMLloader.getController();
-        recipeController.getOneRecipe(namesList, ingredientsList, imagesUrlList, urlsList, caloriesList);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-        System.out.println("Wychodze z passInfo");
+            recipeController = FXMLloader.getController();
+            recipeController.getOneRecipe(namesList, ingredientsList, imagesUrlList, urlsList, caloriesList);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+            System.out.println("Wychodze z passInfo");
+        });
     }
 
     public void onBackButtonClick(ActionEvent event) throws IOException {

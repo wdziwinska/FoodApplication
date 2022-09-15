@@ -1,14 +1,21 @@
 .root{
-    -fx-background-color: #8bf0ff;
+    -fx-background-color: #d3d3d3;
     -fx-text-fill: black;
-    -fx-font-size: 15;
+    -fx-font-size: 14;
 }
 
 #cookBook{
-    -fx-text-fill: #0035bb;
-    -fx-font-size: 35;
+    -fx-text-fill: #0181e2ff;
+    -fx-font-size: 50;
     -fx-font-family: "Eras Bold ITC";
-    -fx-font-style: bold;
+    -fx-font-weight: bold;
+}
+
+#pageHeaders{
+    -fx-text-fill: #0181e2ff;
+    -fx-font-size: 20;
+    -fx-font-family: "Eras Bold ITC";
+    -fx-font-weight: bold;
 }
 
 .text-field{
@@ -17,10 +24,12 @@
 
 .button {
     -fx-border-color: #0181e2ff;
-    -fx-border-width: 0,5;
+    -fx-border-width: 1;
     -fx-padding:5;
     -fx-text-fill: #000000;
     -fx-font-size:14;
+    -fx-pref-height: 26;
+    -fx-pref-width: 100;
 }
 
 .button:hover {
@@ -55,3 +64,46 @@
     -fx-text-fill: black;
 }
 
+#lsIngredients{
+    -fx-background-color: grey;
+    -fx-text-fill: yellow;
+}
+.label{
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+}
+
+#hBoxData{
+    /*-fx-background-color: #8bf0ff;*/
+    -fx-background-color: #d3d3d3;
+    -fx-text-fill: black;
+    -fx-font-size: 13;
+    /*-fx-border-color: black;*/
+    /*-fx-border-radius: 0.1;*/
+}
+
+#hBoxHeader{
+    /*-fx-background-color: #8bf0ff;*/
+    -fx-background-color: #d3d3d3;
+    -fx-text-fill: black;
+    -fx-font-size: 14;
+    -fx-font-weight: bold;
+    -fx-border-color: black;
+    -fx-border-radius: 5;
+}
+
+#favourites{
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-pref-height: 10;
+    -fx-pref-width: 26;
+}
+
+#deleteButton{
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-font-weight: bold;
+    -fx-pref-height: 10;
+    -fx-pref-width: 26;
+}

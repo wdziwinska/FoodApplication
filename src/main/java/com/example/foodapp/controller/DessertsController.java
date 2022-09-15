@@ -1,12 +1,15 @@
 package com.example.foodapp.controller;
 
 import com.example.foodapp.Main;
+import com.example.foodapp.MainController;
 import com.example.foodapp.api.Api;
 import com.example.foodapp.api.ApiController;
 import com.example.foodapp.components.Message;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +21,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -103,13 +107,13 @@ public class DessertsController {
 
         new Thread(() -> {
             try {
-//                RotateTransition rotate = new RotateTransition();
-//                rotate.setNode(loading);
-//                rotate.setDuration(Duration.millis(1000));
-//                rotate.setByAngle(360);
-//                rotate.setCycleCount(TranslateTransition.INDEFINITE);
-//                rotate.play();
-//                loading.setVisible(true);
+                RotateTransition rotate = new RotateTransition();
+                rotate.setNode(loading);
+                rotate.setDuration(Duration.millis(1000));
+                rotate.setByAngle(360);
+                rotate.setCycleCount(TranslateTransition.INDEFINITE);
+                rotate.play();
+                loading.setVisible(true);
 
                 JsonObject jsonObject;
                 if (qValue != null) {
@@ -154,7 +158,7 @@ public class DessertsController {
             Platform.runLater(() ->{
                 try {
                     passInfo(event, "recipes-view.fxml");
-//                    loading.setVisible(false);
+                    loading.setVisible(false);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -157,7 +157,7 @@ public class MealsController {
 
             Platform.runLater(() ->{
                 try {
-                    passInfo(event, "recipes-view2.fxml");
+                    passInfo(event, "recipes-view.fxml");
                     loading.setVisible(false);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -220,30 +220,25 @@ public class MealsController {
     }
 
     public void dietMealsComboBoxAction(ActionEvent event){
-        labelTest.setText(dietMealsComboBox.getValue());
         chosenDietValue = dietMealsComboBox.getValue();
         System.out.println("chosen value: " + chosenDietValue);
     }
 
     public void healthMealsComboBoxAction(ActionEvent event){
-        labelTest.setText(healthMealsComboBox.getValue());
         chosenHealthValue = healthMealsComboBox.getValue();
         System.out.println("chosen value: " + chosenHealthValue);
     }
 
     public void cuisineTypeMealsComboBoxAction(ActionEvent event){
-        labelTest.setText(cuisineTypeMealsComboBox.getValue());
         chosenCuisineTypeValue = cuisineTypeMealsComboBox.getValue();
         System.out.println("chosen value: " + chosenCuisineTypeValue);
     }
 
     public void mealTypeMealsComboBoxAction(ActionEvent event){
-        labelTest.setText(mealTypeMealsComboBox.getValue());
         chosenMealTypeValue = mealTypeMealsComboBox.getValue();
         System.out.println("chosen value: " + chosenMealTypeValue);
     }
     public void dishTypeMealsComboBoxAction(ActionEvent event){
-        labelTest.setText(dishTypeMealsComboBox.getValue());
         chosenDishTypeValue = dishTypeMealsComboBox.getValue();
         System.out.println("chosen value: " + chosenDishTypeValue);
     }

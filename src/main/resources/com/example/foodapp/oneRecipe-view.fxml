@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="96.0" prefWidth="913.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.OneRecipeViewController">
+<HBox fx:id="hBoxData" prefHeight="96.0" prefWidth="913.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.OneRecipeViewController">
    <children>
-      <Button fx:id="favourites" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addToFavourites" prefHeight="20.0" prefWidth="42.0" text="fav" textOverrun="CLIP">
+      <Button fx:id="favourites" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addToFavourites" prefHeight="20.0" prefWidth="42.0" text="+" textOverrun="CLIP">
          <HBox.margin>
             <Insets left="3.0" right="3.0" top="30.0" />
          </HBox.margin>

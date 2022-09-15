@@ -11,9 +11,9 @@
 
 <HBox fx:id="hBoxData" prefHeight="96.0" prefWidth="913.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.OneFavouriteController">
    <children>
-    <Button fx:id="deleteButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="26.0" prefWidth="51.0" text="del">
+    <Button fx:id="deleteButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="26.0" prefWidth="51.0" text="-">
          <HBox.margin>
-            <Insets top="30.0" />
+            <Insets left="2.0" top="30.0" />
          </HBox.margin>
       </Button>
       <ImageView fx:id="image" fitHeight="95.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
@@ -27,7 +27,7 @@
          </font>
       </Label>
       <ListView fx:id="lsIngredients" prefHeight="96.0" prefWidth="386.0" />
-      <Label fx:id="calories" alignment="CENTER" prefHeight="95.0" prefWidth="89.0" text="Label" />
+      <Label fx:id="calories" alignment="CENTER" contentDisplay="CENTER" prefHeight="95.0" prefWidth="89.0" text="Label" />
       <Hyperlink fx:id="hyperlink" onAction="#onHyperlinkClick" prefHeight="24.0" prefWidth="180.0" text="Hyperlink" textAlignment="CENTER" />
    </children>
    <opaqueInsets>

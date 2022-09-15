@@ -6,18 +6,21 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="605.0" prefWidth="913.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.DessertsController">
    <children>
-       <Button fx:id="back" layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="32.0" prefWidth="78.0" text="Back" textAlignment="CENTER"/>
+       <Button fx:id="back" layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#onBackButtonClick" prefHeight="32.0" prefWidth="78.0" text="Back" textAlignment="CENTER" />
 
-       <TextField fx:id="mainIngredientTextField" layoutX="429.0" layoutY="182.0" prefHeight="26.0" prefWidth="157.0" />
-       <Label fx:id="mainIngredient" layoutX="326.0" layoutY="187.0" prefHeight="18.0" prefWidth="105.0" text="Main ingredient" textFill="#515151" />
+       <TextField fx:id="mainIngredientTextField" layoutX="431.0" layoutY="170.0" prefHeight="26.0" prefWidth="150.0" />
+       <Label fx:id="mainIngredient" layoutX="280.0" layoutY="170.0" prefWidth="150.0" text="main ingredient" />
 
-      <Label layoutX="327.0" layoutY="227.0" prefHeight="18.0" prefWidth="75.0" text="diet" />
-      <ComboBox fx:id="dietDessertsComboBox" layoutX="434.0" layoutY="223.0" prefWidth="150.0">
+      <Label layoutX="280.0" layoutY="210.0" prefHeight="18.0" prefWidth="75.0" text="diet" />
+      <ComboBox fx:id="dietDessertsComboBox" layoutX="431.0" layoutY="210.0" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="low-sodium" />
@@ -28,8 +31,8 @@
             </FXCollections>
          </items>
       </ComboBox>
-      <Label layoutX="327.0" layoutY="264.0" text="health" />
-      <ComboBox fx:id="healthDessertsComboBox" layoutX="434.0" layoutY="260.0" prefWidth="150.0">
+      <Label layoutX="280.0" layoutY="250.0" text="health" />
+      <ComboBox fx:id="healthDessertsComboBox" layoutX="431.0" layoutY="250.0" prefWidth="150.0">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Alcohol-Free" />
@@ -52,8 +55,8 @@
               </FXCollections>
           </items>
       </ComboBox>
-      <Label layoutX="327.0" layoutY="296.0" text="cuisine type" />
-      <ComboBox fx:id="cuisineTypeDessertsComboBox" layoutX="434.0" layoutY="292.0" prefWidth="150.0">
+      <Label layoutX="280.0" layoutY="290.0" text="cuisine type" />
+      <ComboBox fx:id="cuisineTypeDessertsComboBox" layoutX="431.0" layoutY="290.0" prefWidth="150.0">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="American" />
@@ -77,12 +80,24 @@
               </FXCollections>
           </items>
       </ComboBox>
-      <Label layoutX="421.0" layoutY="106.0" text="Desserts">
+      <Label fx:id="pageHeaders" layoutX="425.0" layoutY="24.0" text="Desserts">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-       <Button fx:id="OkButton" layoutX="441.0" layoutY="369.0" mnemonicParsing="false" onAction="#OkButtonClick" text="Ok" />
-
+       <Button fx:id="OkButton" layoutX="400.0" layoutY="450.0" mnemonicParsing="false" onAction="#OkButtonClick" text="Ok" />
+      <ImageView fitHeight="118.0" fitWidth="94.0" layoutX="785.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@szef_kuchni(2).png" />
+         </image>
+      </ImageView>
+       <AnchorPane fx:id="loading" layoutX="413.0" layoutY="222.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="99.0" prefWidth="93.0" visible="false" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1">
+           <children>
+               <Circle fx:id="circleSmall" fill="#a1a1a1" layoutX="56.0" layoutY="18.0" radius="9.0" stroke="#a1a1a1" strokeType="INSIDE" />
+               <Circle fx:id="circleMedium" fill="#a1a1a1" layoutX="79.0" layoutY="39.0" radius="9.0" stroke="#a1a1a1" strokeType="INSIDE" />
+               <Circle fx:id="circleLarge" fill="#a1a1a1" layoutX="68.0" layoutY="76.0" radius="9.0" stroke="#a1a1a1" strokeType="INSIDE" />
+               <Circle fx:id="circleMedium1" fill="#a1a1a1" layoutX="30.0" layoutY="86.0" radius="9.0" stroke="#a1a1a1" strokeType="INSIDE" />
+           </children>
+       </AnchorPane>
    </children>
 </AnchorPane>
