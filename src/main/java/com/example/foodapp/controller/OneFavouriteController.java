@@ -17,6 +17,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class OneFavouriteController implements Initializable {
@@ -39,7 +40,7 @@ public class OneFavouriteController implements Initializable {
 
     public String nameChosen;
     public String imageUrlChosen;
-    public String ingredientsChosen;
+    public ArrayList<String> ingredientsChosen;
     public String caloriesChosen;
     public String urlChosen;
 
@@ -49,7 +50,12 @@ public class OneFavouriteController implements Initializable {
         System.out.println("... ustawiam danne w SetData xd");
         image.setImage(new Image(recipe.getImageSoruce()));
         title.setText(recipe.getName());
-//        lsIngredients.getItems().addAll(recipe.getIngredients());
+        lsIngredients.getItems().addAll(recipe.getIngredients());
+
+//        for (int i=0; i<recipe.getIngredients().size(); i++){
+//            lsIngredients.getItems().add(i, recipe.getIngredients().toString());
+//        }
+
         hyperlink.setText(recipe.getUrl());
         calories.setText(recipe.getCalories());
 
@@ -57,7 +63,7 @@ public class OneFavouriteController implements Initializable {
 
         nameChosen = recipe.getName();
         imageUrlChosen = recipe.getImageSoruce();
-        ingredientsChosen = recipe.getIngredients().toString();
+//        ingredientsChosen = recipe.getIngredients();
         caloriesChosen = recipe.getCalories();
         urlChosen = recipe.getUrl();
         System.out.println("... ustawiono danne w SetData xd");

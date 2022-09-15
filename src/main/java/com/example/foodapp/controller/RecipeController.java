@@ -3,8 +3,6 @@ package com.example.foodapp.controller;
 import com.example.foodapp.Main;
 import com.example.foodapp.MainController;
 import com.example.foodapp.model.Recipe;
-import javafx.animation.RotateTransition;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -64,13 +61,13 @@ public class RecipeController implements Initializable {
         urlsRecipe = urls;
         calories = caloriesList;
 
-        RotateTransition rotate = new RotateTransition();
-        rotate.setNode(loading);
-        rotate.setDuration(Duration.millis(1000));
-        rotate.setByAngle(360);
-        rotate.setCycleCount(TranslateTransition.INDEFINITE);
-        rotate.play();
-        loading.setVisible(true);
+//        RotateTransition rotate = new RotateTransition();
+//        rotate.setNode(loading);
+//        rotate.setDuration(Duration.millis(1000));
+//        rotate.setByAngle(360);
+//        rotate.setCycleCount(TranslateTransition.INDEFINITE);
+//        rotate.play();
+//        loading.setVisible(true);
 
         List<Recipe> recipes = new ArrayList<>(recipes());
 
@@ -82,6 +79,9 @@ public class RecipeController implements Initializable {
 
                 try {
                     HBox hBox = FXMLloader.load();
+//                    hBox.getStylesheets().add(getClass().getResource("resources/com/example/foodapp/styles.css").toExternalForm());
+//                    hBox.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+//                    hBox.getStyleClass().add("styles.css");
                     OneRecipeViewController oneRecipeViewController = FXMLloader.getController();
                     oneRecipeViewController.setData(recipes.get(i));
                     recipesLayout.getChildren().add(hBox);

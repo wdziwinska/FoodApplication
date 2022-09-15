@@ -36,6 +36,7 @@ public class FavouriteController implements Initializable {
     public ArrayList<String> imageUrl = new ArrayList<>();
     public ArrayList<String> urlsRecipe = new ArrayList<>();
     public ArrayList<String> calories= new ArrayList<>();
+    public ArrayList<ArrayList> lsOfIngredientsArrayList = new ArrayList<>();
     public ArrayList<String> lsOfIngredients = new ArrayList<>();
 
     ResultSet meals = null;
@@ -65,14 +66,18 @@ public class FavouriteController implements Initializable {
                 e.printStackTrace();
             }
             Platform.runLater(() ->{
-                getOneFav();
+//                try {
+                    getOneFav();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
                 loading.setVisible(false);
             });
         }).start();
         System.out.println(".. wychodze z favMain");
     }
 
-    public void getOneFav(){
+    public void getOneFav() {
 
         System.out.println(".. wchodze do getOneFav");
         List<Recipe> recipes = new ArrayList<>(recipes());
@@ -81,6 +86,8 @@ public class FavouriteController implements Initializable {
 //        Platform.runLater(() ->{
             for (int i = 0; i<recipes.size(); i++){
                 FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource("oneFavourite-view.fxml"));
+             //   Scene scene = new Scene(FXMLloader.load());
+               // scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
 
                 try {
                     HBox hBox = FXMLloader.load();
@@ -108,6 +115,7 @@ public class FavouriteController implements Initializable {
         for(int i=0; i<name.size(); i++) {
             Recipe recipe = new Recipe();
             recipe.setName(name.get(i));
+//            recipe.setIngredient(lsOfIngredientsArrayList.get(i));
             recipe.setIngredient(lsOfIngredients);
             recipe.setImageSoruce(imageUrl.get(i));
             recipe.setUrl(urlsRecipe.get(i));
@@ -131,7 +139,13 @@ public class FavouriteController implements Initializable {
             System.out.println("test db: " + meals.getString("name"));
 //        for(int i=0; i<meals.getFetchSize(); i++){
             name.add(meals.getString("name"));
-            lsOfIngredients.add(meals.getString("ingredients"));
+//            for (int i=0; i<meals.getString("ingredients").length(); i++ ) {
+//                lsOfIngredients.add(i++, meals.getString("ingredients").split(",")[i++]);;
+                System.out.println("lsOfingredients: " + lsOfIngredients);
+
+//            }
+            lsOfIngredients.add(i++, meals.getString("ingredients"));
+//            lsOfIngredientsArrayList.add(i++, (ArrayList) meals.getArray("ingredients"));
             imageUrl.add(meals.getString("imageUrl"));
             calories.add(meals.getString("calories"));
             urlsRecipe.add(meals.getString("urlRecipe"));
