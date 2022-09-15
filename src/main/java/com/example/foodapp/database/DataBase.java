@@ -73,7 +73,6 @@ public class DataBase {
     }
 
     public void delete(String table, String name) throws SQLException {
-
         Statement statement = connection.createStatement();
         String query=("DELETE FROM "+ table +" where name like '"+name+"'");
         statement.executeUpdate(query);
@@ -124,58 +123,7 @@ public class DataBase {
                         "PRIMARY KEY (`id`)"+
                         ");";
 
-//                String createPeople = "CREATE TABLE `people`("+
-//                        "`id` INT NOT NULL AUTO_INCREMENT,"+
-//                        "`name` VARCHAR(100) NOT NULL,"+
-//                        "`height` VARCHAR(50) NOT NULL,"+
-//                        "`hair_color` VARCHAR(50) NOT NULL,"+
-//                        "`eye_color` VARCHAR(50) NOT NULL,"+
-//                        "`birth_year` VARCHAR(50) NOT NULL,"+
-//                        "`gender` VARCHAR(50) NOT NULL,"+
-//                        "`homeworld` VARCHAR(50) NOT NULL,"+
-//                        "`films` TEXT NOT NULL,"+
-//                        "`starships` TEXT NOT NULL,"+
-//                        "`vehicles` TEXT NOT NULL,"+
-//                        "PRIMARY KEY (`id`)"+
-//                        ");";
-//
-//                String createPlanets = "CREATE TABLE `planets`("+
-//                        "`id` INT NOT NULL AUTO_INCREMENT,"+
-//                        "`name` VARCHAR(100) NOT NULL,"+
-//                        "`rotation_period` VARCHAR(100) NOT NULL,"+
-//                        "`orbital_period` VARCHAR(100) NOT NULL,"+
-//                        "`diameter` VARCHAR(100) NOT NULL,"+
-//                        "`climate` VARCHAR(100) NOT NULL,"+
-//                        "`gravity` VARCHAR(100) NOT NULL,"+
-//                        "`terrain` VARCHAR(100) NOT NULL,"+
-//                        "`population` VARCHAR(100) NOT NULL,"+
-//                        "`films` TEXT NOT NULL,"+
-//                        "`residents` TEXT NOT NULL,"+
-//                        "PRIMARY KEY (`id`)"+
-//                        ");";
-//
-//                String createSpecies = "CREATE TABLE `species`("+
-//                        "`id` INT NOT NULL AUTO_INCREMENT,"+
-//                        "`name` VARCHAR(100) NOT NULL,"+
-//                        "`classification` VARCHAR(100) NOT NULL,"+
-//                        "`designation` VARCHAR(100) NOT NULL,"+
-//                        "`average_height` VARCHAR(100) NOT NULL,"+
-//                        "`skin_colors` VARCHAR(100) NOT NULL,"+
-//                        "`hair_colors` VARCHAR(100) NOT NULL,"+
-//                        "`average_lifespan` VARCHAR(100) NOT NULL,"+
-//                        "`language` VARCHAR(100) NOT NULL,"+
-//                        "`homeworld` VARCHAR(100) NOT NULL,"+
-//                        "`films` TEXT NOT NULL,"+
-//                        "`people` TEXT NOT NULL,"+
-//                        "PRIMARY KEY (`id`)"+
-//                        ");";
-
                 statement.executeUpdate(createMeals);
-//                statement.executeUpdate(createPeople);
-//                statement.executeUpdate(createPlanets);
-//                statement.executeUpdate(createSpecies);
-//                statement.executeUpdate(createStarships);
-//                statement.executeUpdate(createVehicles);
                 con.close();
             }
 

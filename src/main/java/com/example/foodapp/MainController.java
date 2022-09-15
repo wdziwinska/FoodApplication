@@ -56,7 +56,5 @@ public class MainController {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-
-        System.out.println("Favousrites clicked!!!");
     }
 }

@@ -50,7 +50,6 @@ public class FavouriteController implements Initializable {
     }
 
     public void favMain(){
-        System.out.println(".. wchodze do favMain");
         new Thread(()->{
             try {
                 RotateTransition rotate = new RotateTransition();
@@ -66,48 +65,34 @@ public class FavouriteController implements Initializable {
                 e.printStackTrace();
             }
             Platform.runLater(() ->{
-//                try {
-                    getOneFav();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
+                getOneFav();
                 loading.setVisible(false);
             });
         }).start();
-        System.out.println(".. wychodze z favMain");
     }
 
     public void getOneFav() {
 
-        System.out.println(".. wchodze do getOneFav");
         List<Recipe> recipes = new ArrayList<>(recipes());
         loading.setVisible(false);
 
-//        Platform.runLater(() ->{
-            for (int i = 0; i<recipes.size(); i++){
-                FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource("oneFavourite-view.fxml"));
-             //   Scene scene = new Scene(FXMLloader.load());
-               // scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
+        for (int i = 0; i<recipes.size(); i++){
+            FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource("oneFavourite-view.fxml"));
 
-                try {
-                    HBox hBox = FXMLloader.load();
-                    OneFavouriteController oneFavouriteController = FXMLloader.getController();
-                    oneFavouriteController.setData(recipes.get(i));
-                    recipesLayout.getChildren().add(hBox);
+            try {
+                HBox hBox = FXMLloader.load();
+                OneFavouriteController oneFavouriteController = FXMLloader.getController();
+                oneFavouriteController.setData(recipes.get(i));
+                recipesLayout.getChildren().add(hBox);
 
-//                    loading.setVisible(false);
 
-                }catch(IOException e){
-                    e.printStackTrace();
-                }
+            }catch(IOException e){
+                e.printStackTrace();
             }
-//        });
-
-        System.out.println(".. wychodze z getOneFav");
+        }
     }
 
     private List<Recipe> recipes(){
-        System.out.println(".. whodze do z recipes");
         List<Recipe> listRecipes = new ArrayList<>();
 
         System.out.println("image url: " + imageUrl);
@@ -115,7 +100,6 @@ public class FavouriteController implements Initializable {
         for(int i=0; i<name.size(); i++) {
             Recipe recipe = new Recipe();
             recipe.setName(name.get(i));
-//            recipe.setIngredient(lsOfIngredientsArrayList.get(i));
             recipe.setIngredient(lsOfIngredients);
             recipe.setImageSoruce(imageUrl.get(i));
             recipe.setUrl(urlsRecipe.get(i));
@@ -123,35 +107,20 @@ public class FavouriteController implements Initializable {
 
             listRecipes.add(recipe);
         }
-        System.out.println(".. wychodze z recipes");
         return listRecipes;
     }
 
     public void getMealsFromDB() throws SQLException {
-        System.out.println(".. wchodze do getMeals");
         meals = db.getAll("meals");
         int i=0;
 
-//        totalSize = Integer(meals.getFetchSize());
-//        latch = new CountDownLatch(totalSize);
-
         while (meals.next()){
-            System.out.println("test db: " + meals.getString("name"));
-//        for(int i=0; i<meals.getFetchSize(); i++){
             name.add(meals.getString("name"));
-//            for (int i=0; i<meals.getString("ingredients").length(); i++ ) {
-//                lsOfIngredients.add(i++, meals.getString("ingredients").split(",")[i++]);;
-                System.out.println("lsOfingredients: " + lsOfIngredients);
-
-//            }
             lsOfIngredients.add(i++, meals.getString("ingredients"));
-//            lsOfIngredientsArrayList.add(i++, (ArrayList) meals.getArray("ingredients"));
             imageUrl.add(meals.getString("imageUrl"));
             calories.add(meals.getString("calories"));
             urlsRecipe.add(meals.getString("urlRecipe"));
         }
-        System.out.println(".. wychodze z getMeals");
-//        getOneFav();
     }
 
     public void onBackButtonClick(ActionEvent event) throws IOException {

@@ -75,11 +75,6 @@ public class MealsController {
     public ArrayList<String> caloriesList  = new ArrayList<String>();;
     public ArrayList<ArrayList> ingredientsList = new ArrayList<ArrayList>();;
 
-    //nie moze miec konstruktora
-//    public MealsController(Api api, ApiController apiController) {
-//        this.api = api;
-//        this.apiController = apiController;
-//    }
 
     public Stage stage;
 
@@ -94,7 +89,6 @@ public class MealsController {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
-        System.out.println("passInfo --- test styles");
         RecipeController recipeController = fxmlLoader.getController();
 
         recipeController.getOneRecipe(namesList, ingredientsList, imagesUrlList, urlsList, caloriesList);
@@ -189,31 +183,6 @@ public class MealsController {
             Message.showPopupMessage("You should type main ingredient",(Stage)((Node)event.getSource()).getScene().getWindow());
 
         }
-
-//        new Thread(() -> {
-//            try {
-//                RotateTransition rotate = new RotateTransition();
-//                rotate.setNode(loading);
-//                rotate.setDuration(Duration.millis(1000));
-//                rotate.setByAngle(360);
-//                rotate.setCycleCount(TranslateTransition.INDEFINITE);
-//                rotate.play();
-//                loading.setVisible(true);
-//
-//
-//            }catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            Platform.runLater(() ->{
-//
-//                try {
-//                    loading.setVisible(false);
-//                    passInfo(event, "recipes-view.fxml");
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            });
-//        }).start();
 
         query="";
         System.out.println("Wychodze z OkButtonClick");

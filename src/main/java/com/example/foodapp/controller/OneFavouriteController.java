@@ -51,11 +51,6 @@ public class OneFavouriteController implements Initializable {
         image.setImage(new Image(recipe.getImageSoruce()));
         title.setText(recipe.getName());
         lsIngredients.getItems().addAll(recipe.getIngredients());
-
-//        for (int i=0; i<recipe.getIngredients().size(); i++){
-//            lsIngredients.getItems().add(i, recipe.getIngredients().toString());
-//        }
-
         hyperlink.setText(recipe.getUrl());
         calories.setText(recipe.getCalories());
 
@@ -63,7 +58,7 @@ public class OneFavouriteController implements Initializable {
 
         nameChosen = recipe.getName();
         imageUrlChosen = recipe.getImageSoruce();
-//        ingredientsChosen = recipe.getIngredients();
+        ingredientsChosen = recipe.getIngredients();
         caloriesChosen = recipe.getCalories();
         urlChosen = recipe.getUrl();
         System.out.println("... ustawiono danne w SetData xd");
