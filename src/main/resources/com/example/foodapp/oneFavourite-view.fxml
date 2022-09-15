@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hBoxData" prefHeight="96.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.OneFavouriteController">
+<HBox fx:id="hBoxData" prefHeight="96.0" prefWidth="913.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.controller.OneFavouriteController">
    <children>
     <Button fx:id="deleteButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onDeleteButtonClick" prefHeight="26.0" prefWidth="51.0" text="del">
          <HBox.margin>

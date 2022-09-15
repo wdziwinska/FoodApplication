@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="913.0" scaleShape="false" style="-fx-background-color: black;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.MainController">
+<AnchorPane cacheShape="false" centerShape="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="913.0" scaleShape="false" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.foodapp.MainController">
    <children>
-      <Label layoutX="395.0" layoutY="24.0" prefHeight="28.0" prefWidth="123.0" text="CookBook" textFill="#ff6565">
+      <Label fx:id="cookBook" layoutX="395.0" layoutY="24.0" prefHeight="50.0" prefWidth="300.0" text="CookBook" >
          <font>
             <Font name="Lucida Console" size="25.0" />
          </font>
       </Label>
 
-      <Button layoutX="164.0" layoutY="289.0" mnemonicParsing="false" onAction="#mealsButtonClick" prefHeight="26.0" prefWidth="78.0" text="Meals" />
-      <Button fx:id="drinks" layoutX="415.0" layoutY="289.0" mnemonicParsing="false" onAction="#drinksButtonClick" prefHeight="26.0" prefWidth="78.0" text="Drinks" />
-      <Button fx:id="desserts" layoutX="675.0" layoutY="289.0" mnemonicParsing="false" onAction="#dessertsButtonClick" prefHeight="26.0" prefWidth="78.0" text="Desserts" />
-      <Button fx:id="favourites" layoutX="415.0" layoutY="467.0" mnemonicParsing="false" onAction="#favouritesButtonClick" prefHeight="26.0" prefWidth="78.0" text="Favourites" />
+      <Button layoutX="164.0" layoutY="289.0" mnemonicParsing="false" onAction="#mealsButtonClick" prefHeight="26.0" prefWidth="100.0" text="Meals" />
+      <Button fx:id="drinks" layoutX="415.0" layoutY="289.0" mnemonicParsing="false" onAction="#drinksButtonClick" prefHeight="26.0" prefWidth="100.0" text="Drinks" />
+      <Button fx:id="desserts" layoutX="675.0" layoutY="289.0" mnemonicParsing="false" onAction="#dessertsButtonClick" prefHeight="26.0" prefWidth="100.0" text="Desserts" />
+      <Button fx:id="favourites" layoutX="415.0" layoutY="467.0" mnemonicParsing="false" onAction="#favouritesButtonClick" prefHeight="26.0" prefWidth="100.0" text="Favourites" />
    </children>
 </AnchorPane>
