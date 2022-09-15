@@ -90,19 +90,17 @@ public class MealsController {
 
     @FXML
     public void passInfo(ActionEvent event, String view) throws IOException {
-        System.out.println("Wchodze do passInfo");
-        FXMLLoader FXMLloader = new FXMLLoader(Main.class.getResource(view));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(view));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(FXMLloader.load());
+        Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(String.valueOf(getClass().getResource("styles.css")));
-        RecipeController recipeController = new RecipeController();
+        System.out.println("passInfo --- test styles");
+        RecipeController recipeController = fxmlLoader.getController();
 
-        recipeController = FXMLloader.getController();
         recipeController.getOneRecipe(namesList, ingredientsList, imagesUrlList, urlsList, caloriesList);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        System.out.println("Wychodze z passInfo");
     }
 
     public void getJsonObject(String qValue, String query, ActionEvent event){
@@ -159,7 +157,7 @@ public class MealsController {
 
             Platform.runLater(() ->{
                 try {
-                    passInfo(event, "recipes-view.fxml");
+                    passInfo(event, "recipes-view2.fxml");
                     loading.setVisible(false);
                 } catch (IOException e) {
                     e.printStackTrace();

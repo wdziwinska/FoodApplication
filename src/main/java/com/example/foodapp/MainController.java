@@ -6,11 +6,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MainController {
+
+    @FXML
+    private Label cookBook;
 
     public Stage stage;
 
@@ -18,7 +22,7 @@ public class MainController {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(viewName));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(fxmlLoader.load());
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("styles.css").toString());
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
